@@ -133,7 +133,7 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("CONTRASEÑA");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/candado.png"))); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 48, 42));
@@ -267,7 +267,7 @@ public class Login extends javax.swing.JFrame {
         
         String busqueda_usuario = metodos.buscarUsuarioRegistrado(txtCorreo.getText().trim(), txtContraseña.getText().trim());
         
-        if(txtCorreo.getText().trim().equals("root")&& txtContraseña.getText().trim().equals("2021"))
+        if(txtCorreo.getText().trim().equals("root")&& txtContraseña.getText().trim().equals("20"))
         {
             JOptionPane.showMessageDialog(this, "Bienvenido inciaste sesión como root (Administrador)");
             Menu_Principal ventana=new Menu_Principal();
