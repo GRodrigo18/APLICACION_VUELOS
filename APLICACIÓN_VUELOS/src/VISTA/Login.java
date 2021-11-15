@@ -27,7 +27,7 @@ public class Login extends javax.swing.JFrame {
         
         if(txtCorreo.getText().isEmpty()){
             lblcorreo.setText("*Campo Vacio");
-        }else if(!txtCorreo.getText().contains("@") || !txtCorreo.getText().contains(".")){
+        }else if(!txtCorreo.getText().contains("^[^@]+@[^@]+\\.[a-zA-Z]{2,}$") || !txtCorreo.getText().contains(".")){
             lblcorreo.setText("*No Valido");
         }else{
             lblcontraseña.setText("");
@@ -39,7 +39,7 @@ public class Login extends javax.swing.JFrame {
             lblcontraseña.setText("");
         }
         
-        if(txtContraseña.getText().isEmpty()|| txtCorreo.getText().isEmpty() || lblcorreo.getText().equals("*correo Invalido")){
+        if(txtContraseña.getText().isEmpty()|| txtCorreo.getText().isEmpty() || lblcorreo.getText().equals("*No valido")){
             btnIngresar.setVisible(false);
         }else{
             btnIngresar.setVisible(true);
