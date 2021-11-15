@@ -18,9 +18,34 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null); //Centra la vantana en la pantalla
         Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
         this.ocultar.setVisible(false);
-        
+        btnIngresar.setVisible(false);
+       
     }
     Metodos_sql_Usuario metodos =new Metodos_sql_Usuario();
+    
+    public void validar(){
+        
+        if(txtCorreo.getText().isEmpty()){
+            lblcorreo.setText("*Campo Vacio");
+        }else if(!txtCorreo.getText().contains("@") || !txtCorreo.getText().contains(".")){
+            lblcorreo.setText("*No Valido");
+        }else{
+            lblcontraseña.setText("");
+        }
+        
+        if(txtContraseña.getText().isEmpty()){
+            lblcontraseña.setText("*Campo Vacio");
+        }else{
+            lblcontraseña.setText("");
+        }
+        
+        if(txtContraseña.getText().isEmpty()|| txtCorreo.getText().isEmpty() || lblcorreo.getText().equals("*correo Invalido")){
+            btnIngresar.setVisible(false);
+        }else{
+            btnIngresar.setVisible(true);
+        }
+        
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,10 +68,12 @@ public class Login extends javax.swing.JFrame {
         txtContraseña = new javax.swing.JPasswordField();
         jSeparator2 = new javax.swing.JSeparator();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
+        btnIngresar = new javax.swing.JButton();
         ver = new javax.swing.JLabel();
         ocultar = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        lblcorreo = new javax.swing.JLabel();
+        lblcontraseña = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -78,14 +105,22 @@ public class Login extends javax.swing.JFrame {
 
         jSeparator1.setBackground(new java.awt.Color(109, 175, 223));
         jSeparator1.setForeground(new java.awt.Color(109, 175, 223));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 290, 10));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 250, 10));
 
         txtCorreo.setBackground(new java.awt.Color(67, 108, 180));
         txtCorreo.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
         txtCorreo.setForeground(new java.awt.Color(109, 175, 223));
         txtCorreo.setBorder(null);
         txtCorreo.setCaretColor(new java.awt.Color(73, 181, 172));
-        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 250, 40));
+        txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCorreoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCorreoKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 210, 40));
 
         jLabel5.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -105,11 +140,16 @@ public class Login extends javax.swing.JFrame {
                 txtContraseñaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 250, 36));
+        txtContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtContraseñaKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 170, 36));
 
         jSeparator2.setBackground(new java.awt.Color(109, 175, 223));
         jSeparator2.setForeground(new java.awt.Color(109, 175, 223));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 290, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 250, 10));
 
         jCheckBox1.setBackground(new java.awt.Color(67, 108, 180));
         jCheckBox1.setFont(new java.awt.Font("Gotham Thin", 0, 14)); // NOI18N
@@ -118,16 +158,16 @@ public class Login extends javax.swing.JFrame {
         jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 160, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(90, 95, 99));
-        jButton1.setText("Ingresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnIngresar.setBackground(new java.awt.Color(109, 175, 223));
+        btnIngresar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnIngresar.setForeground(new java.awt.Color(90, 95, 99));
+        btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnIngresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 290, 45));
+        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 290, 45));
 
         ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_eye_32px.png"))); // NOI18N
         ver.setText(" ");
@@ -136,7 +176,7 @@ public class Login extends javax.swing.JFrame {
                 verMouseClicked(evt);
             }
         });
-        jPanel1.add(ver, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 40, -1));
+        jPanel1.add(ver, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 40, -1));
 
         ocultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_invisible_32px.png"))); // NOI18N
         ocultar.setText(" ");
@@ -145,15 +185,34 @@ public class Login extends javax.swing.JFrame {
                 ocultarMouseClicked(evt);
             }
         });
-        jPanel1.add(ocultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, -1, -1));
+        jPanel1.add(ocultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, -1, -1));
 
+        jLabel2.setBackground(new java.awt.Color(67, 108, 180));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Crear una nueva cuenta");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, 220, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 610));
+        lblcorreo.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        lblcorreo.setForeground(new java.awt.Color(255, 255, 255));
+        lblcorreo.setText(" ");
+        jPanel1.add(lblcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 100, 20));
+
+        lblcontraseña.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        lblcontraseña.setForeground(new java.awt.Color(255, 255, 255));
+        lblcontraseña.setText(" ");
+        jPanel1.add(lblcontraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 337, 100, 20));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 610));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setForeground(new java.awt.Color(255, 0, 0));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eslogan.jpg"))); // NOI18N
@@ -168,24 +227,26 @@ public class Login extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(67, 108, 180));
         jLabel14.setText("x");
+        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel14MouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, -1, -1));
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 30, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(67, 108, 180));
         jLabel1.setText("-");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, -1, 50));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 30, 50));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 380, 610));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 380, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -194,25 +255,31 @@ public class Login extends javax.swing.JFrame {
       
     }//GEN-LAST:event_txtContraseñaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        
         String busqueda_usuario = metodos.buscarUsuarioRegistrado(txtCorreo.getText().trim(), txtContraseña.getText().trim());
-        if(txtCorreo.getText().trim().equals("root")&& txtContraseña.getText().trim().equals("2021")){
+        
+        if(txtCorreo.getText().trim().equals("root")&& txtContraseña.getText().trim().equals("2021"))
+        {
             JOptionPane.showMessageDialog(this, "Bienvenido inciaste sesión como root (Administrador)");
             Menu_Principal ventana=new Menu_Principal();
             ventana.lblnombre.setText("Administrador");
             ventana.setVisible(true);
             this.dispose();
-        }else if(busqueda_usuario.equals("usuario encontrado")){
+        }
+        else if(busqueda_usuario.equals("usuario encontrado"))
+        {
             String busque_nombre= metodos.buscarNombre(txtCorreo.getText());
             JOptionPane.showMessageDialog(this, "Bienvenido (a)\n "+busque_nombre);
             Menu_Principal ventana=new Menu_Principal();
             ventana.lblnombre.setText(busque_nombre);
             ventana.setVisible(true);
             this.dispose();
-        }else{
-            JOptionPane.showMessageDialog(null,"favor de crear una cuenta","Usuario no registrado",JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        else{
+            JOptionPane.showMessageDialog(null,"Crear una nueva cuenta","Usuario no registrado",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
        int a = JOptionPane.YES_NO_OPTION;
@@ -237,6 +304,24 @@ public class Login extends javax.swing.JFrame {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
        this.setState(Login.ICONIFIED);
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void txtCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyTyped
+          
+    }//GEN-LAST:event_txtCorreoKeyTyped
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        Nueva_cuenta nuevacuenta=new Nueva_cuenta();
+        nuevacuenta.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void txtCorreoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyReleased
+        validar();
+    }//GEN-LAST:event_txtCorreoKeyReleased
+
+    private void txtContraseñaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseñaKeyReleased
+        validar();
+    }//GEN-LAST:event_txtContraseñaKeyReleased
 
     /**
      * @param args the command line arguments
@@ -274,7 +359,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnIngresar;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
@@ -291,6 +376,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblcontraseña;
+    private javax.swing.JLabel lblcorreo;
     private javax.swing.JLabel ocultar;
     private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtCorreo;
