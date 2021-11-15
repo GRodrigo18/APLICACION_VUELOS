@@ -196,7 +196,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String busqueda_usuario = metodos.buscarUsuarioRegistrado(txtCorreo.getText().trim(), txtContraseña.getText().trim());
-        if(txtCorreo.getText().trim().equals("root")&& txtContraseña.getText().trim().equals("fabian")){
+        if(txtCorreo.getText().trim().equals("root")&& txtContraseña.getText().trim().equals("2021")){
             JOptionPane.showMessageDialog(this, "Bienvenido inciaste sesión como root (Administrador)");
             Menu_Principal ventana=new Menu_Principal();
             ventana.lblnombre.setText("Administrador");
