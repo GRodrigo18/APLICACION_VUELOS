@@ -4,6 +4,8 @@ package VISTA;
 import CONTROLADOR.Metodos_sql_Usuario;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,14 +25,19 @@ public class Login extends javax.swing.JFrame {
     }
     Metodos_sql_Usuario metodos =new Metodos_sql_Usuario();
     
+    public boolean ValidarEmail(String correo){
+        Pattern pattern= Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
+        Matcher mather =pattern.matcher(correo);
+        return mather.find();
+    }
     public void validar(){
         
         if(txtCorreo.getText().isEmpty()){
             lblcorreo.setText("*Campo Vacio");
-        }else if(!txtCorreo.getText().contains("^[^@]+@[^@]+\\.[a-zA-Z]{2,}$") || !txtCorreo.getText().contains(".")){
-            lblcorreo.setText("*No Valido");
+        }else if(ValidarEmail(txtCorreo.getText())){
+            lblcorreo.setText("Correo valido");
         }else{
-            lblcontraseña.setText("");
+            lblcorreo.setText("*No valido");
         }
         
         if(txtContraseña.getText().isEmpty()){
@@ -56,6 +63,7 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollBar1 = new javax.swing.JScrollBar();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -98,14 +106,14 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("CORREO ELECTRÓNICO");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/@.png"))); // NOI18N
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 48, 36));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 48, 36));
 
         jSeparator1.setBackground(new java.awt.Color(109, 175, 223));
         jSeparator1.setForeground(new java.awt.Color(109, 175, 223));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 250, 10));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 250, 10));
 
         txtCorreo.setBackground(new java.awt.Color(67, 108, 180));
         txtCorreo.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
@@ -120,15 +128,15 @@ public class Login extends javax.swing.JFrame {
                 txtCorreoKeyTyped(evt);
             }
         });
-        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 210, 40));
+        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 210, 40));
 
         jLabel5.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("CONTRASEÑA");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/candado.png"))); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 48, 42));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 48, 42));
 
         txtContraseña.setBackground(new java.awt.Color(67, 108, 180));
         txtContraseña.setFont(txtContraseña.getFont().deriveFont(txtContraseña.getFont().getSize()+7f));
@@ -145,18 +153,18 @@ public class Login extends javax.swing.JFrame {
                 txtContraseñaKeyReleased(evt);
             }
         });
-        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 170, 36));
+        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 170, 36));
 
         jSeparator2.setBackground(new java.awt.Color(109, 175, 223));
         jSeparator2.setForeground(new java.awt.Color(109, 175, 223));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 250, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 250, 10));
 
         jCheckBox1.setBackground(new java.awt.Color(67, 108, 180));
         jCheckBox1.setFont(new java.awt.Font("Gotham Thin", 0, 14)); // NOI18N
         jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setText("Recuérdame");
         jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 160, -1));
+        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 160, -1));
 
         btnIngresar.setBackground(new java.awt.Color(109, 175, 223));
         btnIngresar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -167,7 +175,7 @@ public class Login extends javax.swing.JFrame {
                 btnIngresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 290, 45));
+        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 310, 45));
 
         ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_eye_32px.png"))); // NOI18N
         ver.setText(" ");
@@ -176,7 +184,7 @@ public class Login extends javax.swing.JFrame {
                 verMouseClicked(evt);
             }
         });
-        jPanel1.add(ver, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 40, -1));
+        jPanel1.add(ver, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 40, -1));
 
         ocultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_invisible_32px.png"))); // NOI18N
         ocultar.setText(" ");
@@ -185,7 +193,7 @@ public class Login extends javax.swing.JFrame {
                 ocultarMouseClicked(evt);
             }
         });
-        jPanel1.add(ocultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, -1, -1));
+        jPanel1.add(ocultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(67, 108, 180));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -197,19 +205,19 @@ public class Login extends javax.swing.JFrame {
                 jLabel2MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, 220, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 220, -1));
 
         lblcorreo.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         lblcorreo.setForeground(new java.awt.Color(255, 255, 255));
         lblcorreo.setText(" ");
-        jPanel1.add(lblcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 100, 20));
+        jPanel1.add(lblcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 100, 20));
 
         lblcontraseña.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         lblcontraseña.setForeground(new java.awt.Color(255, 255, 255));
         lblcontraseña.setText(" ");
-        jPanel1.add(lblcontraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 337, 100, 20));
+        jPanel1.add(lblcontraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 100, 20));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 610));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 560));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setForeground(new java.awt.Color(255, 0, 0));
@@ -217,36 +225,36 @@ public class Login extends javax.swing.JFrame {
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eslogan.jpg"))); // NOI18N
         jLabel13.setText(" ");
-        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 340, 230));
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 340, 230));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/avión.png"))); // NOI18N
         jLabel12.setText(" ");
-        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 260, 280));
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 260, 280));
 
         jLabel14.setBackground(new java.awt.Color(67, 108, 180));
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(67, 108, 180));
-        jLabel14.setText("x");
+        jLabel14.setText(" x");
         jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel14MouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 30, -1));
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 50, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(67, 108, 180));
-        jLabel1.setText("-");
+        jLabel1.setText(" -");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 30, 50));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 40, 50));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 380, 610));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 380, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -374,6 +382,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblcontraseña;
