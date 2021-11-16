@@ -64,7 +64,7 @@ public class Metodos_sql_Usuario {
     public int guardar(String nombre,String apellidos,String correo,String contraseña){
         int resultado=0;
         Connection conexion = null;
-        String sentencia_guardar=("INSERT INTO usuarios (Nombre,Apellido,Correo,Contraseña)"
+        String sentencia_guardar=("INSERT INTO ingreso (Nombre,Apellido,Correo,Contraseña)"
                 + "VALUES (?,?,?,?)");
         try {
             conexion =Conexionbd_Usuario.conectar();
