@@ -270,6 +270,7 @@ public class frm_CrearCuenta extends javax.swing.JFrame {
         btnCrearCuenta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnCrearCuenta.setForeground(new java.awt.Color(90, 95, 99));
         btnCrearCuenta.setText("Crear Cuenta");
+        btnCrearCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCrearCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearCuentaActionPerformed(evt);
@@ -279,6 +280,7 @@ public class frm_CrearCuenta extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_left_52px.png"))); // NOI18N
         jLabel2.setText(" ");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
