@@ -4,6 +4,8 @@ package VISTA;
 import CONTROLADOR.Metodos_sql_Usuario;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class frm_CrearCuenta extends javax.swing.JFrame {
@@ -344,11 +346,12 @@ public class frm_CrearCuenta extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        int a = JOptionPane.YES_NO_OPTION;
-        int mensaje= JOptionPane.showConfirmDialog(this,"¿DESEA SALIR?","SALIR",a);
-        if(mensaje==0){
-            System.exit(a);
-        }
+        Icon a =new ImageIcon(getClass().getResource("/Imagenes/close.png"));
+       int s=JOptionPane.YES_NO_OPTION;
+       int mensaje= JOptionPane.showConfirmDialog(this,"¿DESEA SALIR?","SALIR",s,JOptionPane.YES_NO_OPTION,a);
+       if(mensaje==0){
+           System.exit(s);
+       }
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void txtapellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtapellidoKeyReleased
