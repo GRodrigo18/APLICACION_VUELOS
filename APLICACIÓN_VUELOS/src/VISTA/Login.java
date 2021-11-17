@@ -350,11 +350,11 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtContraseñaKeyReleased
 
     private void btnIngresarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseMoved
-        btnIngresar.setBackground(new java.awt.Color(54,6,55));
+     
     }//GEN-LAST:event_btnIngresarMouseMoved
 
     private void btnIngresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseExited
-         btnIngresar.setBackground(new java.awt.Color(78,34,88));
+       
     }//GEN-LAST:event_btnIngresarMouseExited
 
     /**
