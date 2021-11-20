@@ -24,48 +24,234 @@ public class Menu_Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        salir = new javax.swing.JLabel();
+        registroVuelos = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        registroEquipaje = new javax.swing.JLabel();
+        infoVuelos = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         lblnombre = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        registro_vuelos = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        registro_equipaje = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        info_vuelos = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        jLabel1.setText("\"ACCESO AL SISTEMA\"");
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("INICIO DE SESIÓN COMO: ");
+        jPanel2.setBackground(new java.awt.Color(67, 108, 180));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel3.setBackground(new java.awt.Color(54, 127, 168));
+        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("ACCESO AL SISTEMA");
+        jLabel3.setOpaque(true);
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 38));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("INICIO DE SESIÓN");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, 20));
+
+        salir.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        salir.setForeground(new java.awt.Color(255, 255, 255));
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_exit_40px.png"))); // NOI18N
+        salir.setText("Salir ");
+        salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salirMouseClicked(evt);
+            }
+        });
+        jPanel2.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 250, -1));
+
+        registroVuelos.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        registroVuelos.setForeground(new java.awt.Color(255, 255, 255));
+        registroVuelos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_airplane_40px.png"))); // NOI18N
+        registroVuelos.setText("Registro de Vuelos");
+        registroVuelos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registroVuelosMouseClicked(evt);
+            }
+        });
+        jPanel2.add(registroVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 250, -1));
+
+        jLabel7.setForeground(new java.awt.Color(0, 204, 0));
+        jLabel7.setText("online");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_user_64px.png"))); // NOI18N
+        jLabel8.setText(" ");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 60, 70));
+
+        registroEquipaje.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        registroEquipaje.setForeground(new java.awt.Color(255, 255, 255));
+        registroEquipaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_luggage_trolley_40px_1.png"))); // NOI18N
+        registroEquipaje.setText("Registro de Equipaje");
+        registroEquipaje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registroEquipajeMouseClicked(evt);
+            }
+        });
+        jPanel2.add(registroEquipaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 250, -1));
+
+        infoVuelos.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        infoVuelos.setForeground(new java.awt.Color(255, 255, 255));
+        infoVuelos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_more_info_40px.png"))); // NOI18N
+        infoVuelos.setText("Información de vuelos");
+        infoVuelos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                infoVuelosMouseClicked(evt);
+            }
+        });
+        jPanel2.add(infoVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 250, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 600));
+
+        jPanel3.setBackground(new java.awt.Color(54, 127, 168));
+        jPanel3.setForeground(new java.awt.Color(16, 78, 146));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("INICIO DE SESIÓN COMO: ");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, -1, 40));
+
+        lblnombre.setForeground(new java.awt.Color(255, 255, 255));
         lblnombre.setText(" ");
+        jPanel3.add(lblnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 160, 40));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 680, 40));
+
+        jPanel5.setLayout(new java.awt.CardLayout());
+
+        registro_vuelos.setBackground(new java.awt.Color(255, 255, 255));
+        registro_vuelos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("\"REGISTRO DE VUELOS \"");
+        registro_vuelos.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, -1, -1));
+
+        jPanel5.add(registro_vuelos, "card2");
+
+        registro_equipaje.setBackground(new java.awt.Color(255, 255, 255));
+        registro_equipaje.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("\"REGISTRO DE EQUIPAJE\"");
+
+        javax.swing.GroupLayout registro_equipajeLayout = new javax.swing.GroupLayout(registro_equipaje);
+        registro_equipaje.setLayout(registro_equipajeLayout);
+        registro_equipajeLayout.setHorizontalGroup(
+            registro_equipajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registro_equipajeLayout.createSequentialGroup()
+                .addGap(230, 230, 230)
+                .addComponent(jLabel5)
+                .addContainerGap(239, Short.MAX_VALUE))
+        );
+        registro_equipajeLayout.setVerticalGroup(
+            registro_equipajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registro_equipajeLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(jLabel5)
+                .addContainerGap(473, Short.MAX_VALUE))
+        );
+
+        jPanel5.add(registro_equipaje, "card3");
+
+        info_vuelos.setBackground(new java.awt.Color(255, 255, 255));
+        info_vuelos.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("\"INFORMACIÓN DE VUELOS\"");
+
+        javax.swing.GroupLayout info_vuelosLayout = new javax.swing.GroupLayout(info_vuelos);
+        info_vuelos.setLayout(info_vuelosLayout);
+        info_vuelosLayout.setHorizontalGroup(
+            info_vuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, info_vuelosLayout.createSequentialGroup()
+                .addContainerGap(232, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(207, 207, 207))
+        );
+        info_vuelosLayout.setVerticalGroup(
+            info_vuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(info_vuelosLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel6)
+                .addContainerGap(455, Short.MAX_VALUE))
+        );
+
+        jPanel5.add(info_vuelos, "card4");
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 680, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(65, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lblnombre))
-                .addGap(17, 17, 17))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void registroVuelosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroVuelosMouseClicked
+        registroVuelos.setBackground(new java.awt.Color(44,59,66));
+        registro_vuelos.setVisible(true);
+        
+        registroEquipaje.setBackground(new java.awt.Color(34,45,49));
+        registro_equipaje.setVisible(false);
+        
+        infoVuelos.setBackground(new java.awt.Color(34,45,49));
+        info_vuelos.setVisible(false);
+    }//GEN-LAST:event_registroVuelosMouseClicked
+
+    private void registroEquipajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroEquipajeMouseClicked
+        registroVuelos.setBackground(new java.awt.Color(34,45,49));
+        registro_vuelos.setVisible(false);
+        
+        registroEquipaje.setBackground(new java.awt.Color(44,59,66));
+        registro_equipaje.setVisible(true);
+        
+        infoVuelos.setBackground(new java.awt.Color(34,45,49));
+        info_vuelos.setVisible(false);
+    }//GEN-LAST:event_registroEquipajeMouseClicked
+
+    private void infoVuelosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoVuelosMouseClicked
+        registroVuelos.setBackground(new java.awt.Color(34,45,49));
+        registro_vuelos.setVisible(false);
+        
+        registroEquipaje.setBackground(new java.awt.Color(34,45,49));
+        registro_equipaje.setVisible(false);
+        
+        infoVuelos.setBackground(new java.awt.Color(44,59,66));
+        info_vuelos.setVisible(true);
+    }//GEN-LAST:event_infoVuelosMouseClicked
+
+    private void salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_salirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -103,8 +289,25 @@ public class Menu_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel infoVuelos;
+    private javax.swing.JPanel info_vuelos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
     public javax.swing.JLabel lblnombre;
+    private javax.swing.JLabel registroEquipaje;
+    private javax.swing.JLabel registroVuelos;
+    private javax.swing.JPanel registro_equipaje;
+    private javax.swing.JPanel registro_vuelos;
+    private javax.swing.JLabel salir;
     // End of variables declaration//GEN-END:variables
 }
