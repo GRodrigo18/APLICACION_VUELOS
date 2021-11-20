@@ -76,7 +76,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 salirMouseClicked(evt);
             }
         });
-        jPanel2.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 250, -1));
+        jPanel2.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 250, -1));
 
         registroVuelos.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         registroVuelos.setForeground(new java.awt.Color(255, 255, 255));
@@ -87,7 +87,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 registroVuelosMouseClicked(evt);
             }
         });
-        jPanel2.add(registroVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 250, -1));
+        jPanel2.add(registroVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 250, -1));
 
         jLabel7.setForeground(new java.awt.Color(0, 204, 0));
         jLabel7.setText("online");
@@ -106,7 +106,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 registroEquipajeMouseClicked(evt);
             }
         });
-        jPanel2.add(registroEquipaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 250, -1));
+        jPanel2.add(registroEquipaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 250, -1));
 
         infoVuelos.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         infoVuelos.setForeground(new java.awt.Color(255, 255, 255));
@@ -117,7 +117,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 infoVuelosMouseClicked(evt);
             }
         });
-        jPanel2.add(infoVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 250, -1));
+        jPanel2.add(infoVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 250, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 600));
 
