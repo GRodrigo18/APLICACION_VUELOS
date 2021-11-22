@@ -5,9 +5,14 @@ import java.sql.ResultSet;
 import CONTROLADOR.conexion_vuelos;
 import MODELO.Equipaje;
 import MODELO.Vuelos;
+import com.mysql.jdbc.PreparedStatement;
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     String hora,minutos,segundos;
@@ -23,13 +28,14 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         
         lblfechactual.setText(fecha());
         
-        String[] titulos={"ID","Nombre","Apellido","sexo","Tipo doc.","N°doc.","Pasaporte","Origen","Destino","Salida","Retorno"};
+        String[] titulos={"Nombre","Apellido","sexo","Tipo doc.","N°doc.","Pasaporte","Origen","Destino","Salida","Retorno"};
         model=new DefaultTableModel(null,titulos);
         tblRegistrovuelos.setModel(model);
         
         String[] titulo = {"Nombre","Apellido","N°equip.","Peso","Precio"};
         modelo=new DefaultTableModel(null,titulo);
         tbRegistroequipaje.setModel(modelo);
+ 
     }
     public void hora()
     {
@@ -106,7 +112,6 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         btnBorrar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
-        txtid = new javax.swing.JTextField();
         registro_equipaje1 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -262,12 +267,22 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
 
         txtnombre.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         txtnombre.setText(" ");
+        txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnombreKeyTyped(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel14.setText("Apellidos:");
 
         txtapellido.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         txtapellido.setText(" ");
+        txtapellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtapellidoKeyTyped(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel12.setText("Sexo:");
@@ -286,12 +301,22 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
 
         txtnumdocu.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         txtnumdocu.setText(" ");
+        txtnumdocu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnumdocuKeyTyped(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel18.setText("Pasaporte:");
 
         txtpasaporte.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         txtpasaporte.setText(" ");
+        txtpasaporte.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtpasaporteKeyTyped(evt);
+            }
+        });
 
         jLabel19.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel19.setText("Origen:");
@@ -325,8 +350,10 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jScrollPane1.setViewportView(tblRegistrovuelos);
 
         fechsali.setBackground(new java.awt.Color(255, 255, 255));
+        fechsali.setDateFormatString("yyyy-MM-dd");
 
         fechretor.setBackground(new java.awt.Color(255, 255, 255));
+        fechretor.setDateFormatString("yyyy-MM-dd");
 
         btnEditar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnEditar.setText("Editar");
@@ -359,11 +386,6 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                 btnAgregarActionPerformed(evt);
             }
         });
-
-        txtid.setBackground(new java.awt.Color(175, 209, 236));
-        txtid.setForeground(new java.awt.Color(175, 209, 236));
-        txtid.setText(" ");
-        txtid.setBorder(null);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -438,9 +460,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -491,9 +511,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                     .addComponent(btnCancelar))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout registro_vuelosLayout = new javax.swing.GroupLayout(registro_vuelos);
@@ -783,16 +801,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-       
-        conexion_vuelos objconexion=new conexion_vuelos();
-        Vuelos Ousuario= recuperarDatosGUI();
-        String strSentenciaInsert=String.format("INSERT INTO vuelos(id_vuelos,Nombre,Apellido,sexo,tip_documento,num_documento,num_pasaporte,origen,destino,fecha_salida,fecha_retorno)"
-            +"VALUES (null,'%s','%s','%s','%s','%s','%s','%s','%s',?,?)"
-            ,Ousuario.getNombre(),Ousuario.getApellido(),Ousuario.getSexo(),
-            Ousuario.getTip_documento(),Ousuario.getNum_documento(),Ousuario.getNum_pasaporte(),Ousuario.getOrigen(),Ousuario.getDestino(),
-            Ousuario.getFecha_salida(),Ousuario.getFecha_retorno());
-
-        objconexion.ejecutarsentenciasql(strSentenciaInsert);
+       registro_datos();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar1ActionPerformed
@@ -802,10 +811,11 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
             + "VALUES ('%s','%s','%s','%s','%s')",Oequipaje.getNombre1(),Oequipaje.getApellido1(),Oequipaje.getNum_equipaje(),Oequipaje.getPeso(),Oequipaje.getPrecio());
 
         Objconexion.ejecutarsentenciasql(strSentenciaInsert);
-        MostrarDatos();
+         
     }//GEN-LAST:event_btnAgregar1ActionPerformed
-
-    public void MostrarDatos(){
+     
+    
+    public void MostrarDatos1(){
         while (modelo.getRowCount()>0) {
             modelo.removeRow(0);
         }
@@ -833,6 +843,38 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         Limpiar();
     }//GEN-LAST:event_btnCancelar1ActionPerformed
 
+    private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
+      char validar=evt.getKeyChar();
+                 if(Character.isDigit(validar))
+                 {
+                    getToolkit().beep();
+                    evt.consume();
+                    
+                    JOptionPane.showMessageDialog(rootPane,"Ingresar solo Letras");
+                 }
+    }//GEN-LAST:event_txtnombreKeyTyped
+
+    private void txtapellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtapellidoKeyTyped
+        char validar=evt.getKeyChar();
+                 if(Character.isDigit(validar))
+                 {
+                    getToolkit().beep();
+                    evt.consume();
+                    
+                    JOptionPane.showMessageDialog(rootPane,"Ingresar solo Letras");
+                 }
+    }//GEN-LAST:event_txtapellidoKeyTyped
+
+    private void txtnumdocuKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnumdocuKeyTyped
+        ValidarLongitudCadena(txtnumdocu.getText(),8, evt);
+                ValidarLetrasNumeros(Character.isLetter(evt.getKeyChar()), evt);
+    }//GEN-LAST:event_txtnumdocuKeyTyped
+
+    private void txtpasaporteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasaporteKeyTyped
+       ValidarLongitudCadena(txtpasaporte.getText(),11, evt);
+                ValidarLetrasNumeros(Character.isLetter(evt.getKeyChar()), evt);
+    }//GEN-LAST:event_txtpasaporteKeyTyped
+
     public static String fecha()
     {
         Date fecha=new Date();
@@ -840,9 +882,10 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         return formatofecha.format(fecha);
     }
      public Vuelos recuperarDatosGUI(){
-        Vuelos Ovuelos=new Vuelos();
-        int ID= (txtid.getText().trim().isEmpty())?0: Integer.parseInt(txtid.getText());
-        Ovuelos.setId_vuelos(ID);
+       
+        
+         Vuelos Ovuelos=new Vuelos();
+   
         Ovuelos.setNombre(txtnombre.getText().trim());
         Ovuelos.setApellido(txtapellido.getText().trim());
         Ovuelos.setSexo(txtsexo.getText().trim());
@@ -855,6 +898,39 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         Ovuelos.setFecha_retorno(fechretor.getDateFormatString());
         
         return Ovuelos;
+    }
+    public void registro_datos(){
+        conexion_vuelos objconexion=new conexion_vuelos();
+        Connection cn=objconexion.conexion_vuelos();
+        
+        try {
+            String sql="INSERT INTO vuelos(Nombre,Apellido,sexo,tip_documento,num_documento,num_pasaporte,origen,destino,fecha_salida,fecha_retorno)VALUES(?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement pst=(PreparedStatement) cn.prepareStatement(sql);
+            pst.setString(1,txtnombre.getText());
+            pst.setString(2,txtapellido.getText());
+            pst.setString(3,txtsexo.getText());
+            pst.setString(4,cxbtipodocu.getSelectedItem().toString());
+            pst.setString(5,txtnumdocu.getText());
+            pst.setString(6,txtpasaporte.getText());
+            pst.setString(7,cxborigen.getSelectedItem().toString());
+            pst.setString(8,cxbdestino.getSelectedItem().toString());
+            pst.setString(9,((JTextField)fechsali.getDateEditor().getUiComponent()).getText());
+            pst.setString(10,((JTextField)fechretor.getDateEditor().getUiComponent()).getText());
+            
+            pst.execute();
+            
+            JOptionPane.showMessageDialog(null,"Registro Exitoso");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Error de Registro"+e.getMessage());
+        }
+    }
+    
+    public void ValidarLongitudCadena(String cadena,int tamanio,KeyEvent ev)
+    {
+        if(cadena.trim().length()==tamanio){ev.consume();}
+    }
+    public void ValidarLetrasNumeros(boolean dt, KeyEvent e){
+        if(dt){e.consume();}
     }
     
     public void Limpiar(){
@@ -970,7 +1046,6 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JTable tblRegistrovuelos;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtapellido1;
-    private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txtnombre1;
     private javax.swing.JTextField txtnumdocu;

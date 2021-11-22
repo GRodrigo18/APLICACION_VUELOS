@@ -2,17 +2,8 @@
 package MODELO;
 
 public class Vuelos {
-    int id_vuelos;
     String nombre,apellido,sexo,tip_documento,num_documento,num_pasaporte;
     String origen, destino,fecha_salida,fecha_retorno;
-
-    public int getId_vuelos() {
-        return id_vuelos;
-    }
-
-    public void setId_vuelos(int id_vuelos) {
-        this.id_vuelos = id_vuelos;
-    }
 
     public String getNombre() {
         return nombre;
