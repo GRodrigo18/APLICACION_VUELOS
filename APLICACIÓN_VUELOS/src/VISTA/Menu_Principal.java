@@ -21,6 +21,8 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         hilo.start();
         setVisible(true);
         
+        lblfechactual.setText(fecha());
+        
         String[] titulos={"ID","Nombre","Apellido","sexo","Tipo doc.","N°doc.","Pasaporte","Origen","Destino","Salida","Retorno"};
         model=new DefaultTableModel(null,titulos);
         tblRegistrovuelos.setModel(model);
@@ -784,22 +786,20 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
        
         conexion_vuelos objconexion=new conexion_vuelos();
         Vuelos Ousuario= recuperarDatosGUI();
-        String strSentenciaInsert=String.format("INSERT INTO vuelos(id_vuelos,Nombre,Apellido,sexo,tip_documento"
-            + "num_documento,num_pasaporte,origen,destino,fecha_salida,fecha_retorno)"
-            +"VALUES (null,?,?,?,?,?,?,?,?,?)"
+        String strSentenciaInsert=String.format("INSERT INTO vuelos(id_vuelos,Nombre,Apellido,sexo,tip_documento,num_documento,num_pasaporte,origen,destino,fecha_salida,fecha_retorno)"
+            +"VALUES (null,'%s','%s','%s','%s','%s','%s','%s','%s',?,?)"
             ,Ousuario.getNombre(),Ousuario.getApellido(),Ousuario.getSexo(),
             Ousuario.getTip_documento(),Ousuario.getNum_documento(),Ousuario.getNum_pasaporte(),Ousuario.getOrigen(),Ousuario.getDestino(),
             Ousuario.getFecha_salida(),Ousuario.getFecha_retorno());
 
         objconexion.ejecutarsentenciasql(strSentenciaInsert);
-        Limpiar();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar1ActionPerformed
         conexion_equipaje Objconexion= new conexion_equipaje();
         Equipaje Oequipaje= recupeDatosGUI();
         String strSentenciaInsert=String.format("INSERT INTO equipaje(Nombre,Apellido,Num_equipaje,Peso,Precio) "
-            + "VALUES (null,'%s','%s','%s')",Oequipaje.getNombre1(),Oequipaje.getApellido1(),Oequipaje.getNum_equipaje(),Oequipaje.getPeso(),Oequipaje.getPrecio());
+            + "VALUES ('%s','%s','%s','%s','%s')",Oequipaje.getNombre1(),Oequipaje.getApellido1(),Oequipaje.getNum_equipaje(),Oequipaje.getPeso(),Oequipaje.getPrecio());
 
         Objconexion.ejecutarsentenciasql(strSentenciaInsert);
         MostrarDatos();
@@ -858,17 +858,11 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     }
     
     public void Limpiar(){
-        for (int i = 0; i<= tblRegistrovuelos.getRowCount(); i++){
-            model.removeRow(i);
-            i = i-1;
-        }
+         
     }
     
     public void Limpiar1(){
-        for (int i = 0; i<= tbRegistroequipaje.getRowCount(); i++){
-            modelo.removeRow(i);
-            i = i-1;
-        }
+        
     }
     
     public Equipaje recupeDatosGUI(){
