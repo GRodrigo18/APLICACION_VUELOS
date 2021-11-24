@@ -19,5 +19,4 @@ public class conexion_vuelos {
          return conectar;
      }
         
-     
 }
