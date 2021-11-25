@@ -1,5 +1,7 @@
  
 package VISTA;
+ 
+import CONTROLADOR.Metodos_sql_Usuario;
 import CONTROLADOR.conexion_equipaje;
 import java.sql.ResultSet;
 import CONTROLADOR.conexion_vuelos;
@@ -11,6 +13,8 @@ import java.sql.Statement;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -18,6 +22,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     String hora,minutos,segundos;
     Thread hilo;
     DefaultTableModel model,modelo;
+    Statement pst;
     public Menu_Principal() {
         initComponents();
         setLocationRelativeTo(null);
@@ -28,14 +33,16 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         
         lblfechactual.setText(fecha());
         
-        String[] titulos={"Nombre","Apellido","sexo","Tipo doc.","N°doc.","Pasaporte","Origen","Destino","Salida","Retorno"};
+        String[] titulos={"ID","Nombre","Apellido","sexo","Tipo doc.","N°doc.","Pasaporte","Origen","Destino","Salida","Retorno"};
         model=new DefaultTableModel(null,titulos);
         tblRegistrovuelos.setModel(model);
         
         String[] titulo = {"Nombre","Apellido","N°equip.","Peso","Precio"};
         modelo=new DefaultTableModel(null,titulo);
         tbRegistroequipaje.setModel(modelo);
- 
+        MostrarVuelos("vuelos");
+        Limpiarvuelos();
+
     }
     public void hora()
     {
@@ -65,6 +72,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        botones_sexo = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -92,7 +100,6 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jLabel14 = new javax.swing.JLabel();
         txtapellido = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtsexo = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         cxbtipodocu = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
@@ -111,8 +118,13 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         fechretor = new com.toedter.calendar.JDateChooser();
         btnEditar = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
+        txtid_vuelos = new javax.swing.JTextField();
+        botonMasculino = new javax.swing.JRadioButton();
+        botonfemenino = new javax.swing.JRadioButton();
+        btnCancelar = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
+        txtbuscar = new javax.swing.JTextField();
         registro_equipaje1 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -167,7 +179,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                 salirMouseClicked(evt);
             }
         });
-        jPanel2.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 240, 30));
+        jPanel2.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 240, 30));
 
         registroVuelos.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         registroVuelos.setForeground(new java.awt.Color(255, 255, 255));
@@ -178,7 +190,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                 registroVuelosMouseClicked(evt);
             }
         });
-        jPanel2.add(registroVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 240, -1));
+        jPanel2.add(registroVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 262, 240, 40));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 204, 0));
@@ -198,7 +210,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                 registroEquipajeMouseClicked(evt);
             }
         });
-        jPanel2.add(registroEquipaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 240, -1));
+        jPanel2.add(registroEquipaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 240, 40));
 
         infoVuelos.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         infoVuelos.setForeground(new java.awt.Color(255, 255, 255));
@@ -209,7 +221,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                 infoVuelosMouseClicked(evt);
             }
         });
-        jPanel2.add(infoVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 240, -1));
+        jPanel2.add(infoVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 240, 40));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -267,10 +279,12 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jLabel15.setOpaque(true);
 
         jPanel4.setBackground(new java.awt.Color(175, 209, 236));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("Nombres:");
+        jLabel13.setText("Buscar:");
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         txtnombre.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         txtnombre.setText(" ");
@@ -279,10 +293,12 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                 txtnombreKeyTyped(evt);
             }
         });
+        jPanel4.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 14, 172, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Apellidos:");
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 53, 65, -1));
 
         txtapellido.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         txtapellido.setText(" ");
@@ -291,24 +307,26 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                 txtapellidoKeyTyped(evt);
             }
         });
+        jPanel4.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 52, 172, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Sexo:");
-
-        txtsexo.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        txtsexo.setText(" ");
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, 20));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Tipo de documento:");
+        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 15, -1, -1));
 
         cxbtipodocu.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         cxbtipodocu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "DNI", "Carnet de extranjeria" }));
+        jPanel4.add(cxbtipodocu, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 14, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Número de documento:");
+        jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 53, -1, -1));
 
         txtnumdocu.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         txtnumdocu.setText(" ");
@@ -317,10 +335,12 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                 txtnumdocuKeyTyped(evt);
             }
         });
+        jPanel4.add(txtnumdocu, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 52, 125, -1));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Pasaporte:");
+        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 84, -1, -1));
 
         txtpasaporte.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         txtpasaporte.setText(" ");
@@ -329,28 +349,35 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                 txtpasaporteKeyTyped(evt);
             }
         });
+        jPanel4.add(txtpasaporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 83, 127, -1));
 
         jLabel19.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("Origen:");
+        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, -1, -1));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("Destino:");
+        jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 128, -1, -1));
 
         cxborigen.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         cxborigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Lima", "Amazonas", "Ancash", "Apurimac", "Arequipa", "Ayacucho", "Cajamarca", "Callao", "Huancavelica" }));
+        jPanel4.add(cxborigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(489, 127, -1, -1));
 
         cxbdestino.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        cxbdestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Tokio", "New York", "Los Angeles", "Paris", "Seul", "Londres", "Moscu", "Boston", "Barcelona", "Bogota" }));
+        cxbdestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Tokio", "New York", "Los Angeles", "Paris", "Seul", "Londres", "Moscu", "Boston", " ", " ", " " }));
+        jPanel4.add(cxbdestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 127, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("Fecha de salida:");
+        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 133, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("Fecha de retorno:");
+        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 161, -1, -1));
 
         tblRegistrovuelos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -363,13 +390,23 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblRegistrovuelos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tblRegistrovuelos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblRegistrovuelosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblRegistrovuelos);
+
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 830, 238));
 
         fechsali.setBackground(new java.awt.Color(255, 255, 255));
         fechsali.setDateFormatString("yyyy-MM-dd");
+        jPanel4.add(fechsali, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 133, 131, -1));
 
         fechretor.setBackground(new java.awt.Color(255, 255, 255));
         fechretor.setDateFormatString("yyyy-MM-dd");
+        jPanel4.add(fechretor, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 161, 131, -1));
 
         btnEditar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
@@ -379,6 +416,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                 btnEditarActionPerformed(evt);
             }
         });
+        jPanel4.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, -1, -1));
 
         btnBorrar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrar.png"))); // NOI18N
@@ -388,15 +426,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                 btnBorrarActionPerformed(evt);
             }
         });
-
-        btnCancelar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
+        jPanel4.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, -1, -1));
 
         btnAgregar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/agregar-archivo.png"))); // NOI18N
@@ -406,131 +436,62 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                 btnAgregarActionPerformed(evt);
             }
         });
+        jPanel4.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, -1, -1));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtsexo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtapellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel21)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fechsali, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel22)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fechretor, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(btnAgregar)
-                                .addGap(71, 71, 71)))))
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel19))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cxbtipodocu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtnumdocu, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtpasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(cxborigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnCancelar)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel20)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cxbdestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditar)
-                        .addGap(47, 47, 47)
-                        .addComponent(btnBorrar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 816, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cxbtipodocu, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel16))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel13)
-                        .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel14)
-                        .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel17)
-                        .addComponent(txtnumdocu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel18)
-                            .addComponent(txtpasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19)
-                            .addComponent(cxborigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel20)
-                            .addComponent(cxbdestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(131, 131, 131))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(txtsexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel21)
-                            .addComponent(fechsali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel22)
-                            .addComponent(fechretor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAgregar)
-                            .addComponent(btnEditar)
-                            .addComponent(btnBorrar)
-                            .addComponent(btnCancelar))
-                        .addGap(43, 43, 43)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
-        );
+        txtid_vuelos.setEditable(false);
+        txtid_vuelos.setBackground(new java.awt.Color(175, 209, 236));
+        txtid_vuelos.setForeground(new java.awt.Color(175, 209, 236));
+        txtid_vuelos.setText(" ");
+        txtid_vuelos.setBorder(null);
+        txtid_vuelos.setOpaque(true);
+        jPanel4.add(txtid_vuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 528, -1, -1));
+
+        botonMasculino.setBackground(new java.awt.Color(175, 209, 236));
+        botones_sexo.add(botonMasculino);
+        botonMasculino.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        botonMasculino.setForeground(new java.awt.Color(0, 0, 0));
+        botonMasculino.setText("Masculino");
+        botonMasculino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMasculinoActionPerformed(evt);
+            }
+        });
+        jPanel4.add(botonMasculino, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, 20));
+
+        botonfemenino.setBackground(new java.awt.Color(175, 209, 236));
+        botones_sexo.add(botonfemenino);
+        botonfemenino.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        botonfemenino.setForeground(new java.awt.Color(0, 0, 0));
+        botonfemenino.setText("Femenino");
+        botonfemenino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonfemeninoActionPerformed(evt);
+            }
+        });
+        jPanel4.add(botonfemenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, 20));
+
+        btnCancelar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 210, -1, -1));
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel27.setText("Nombres:");
+        jPanel4.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 15, -1, -1));
+
+        txtbuscar.setText(" ");
+        txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbuscarKeyReleased(evt);
+            }
+        });
+        jPanel4.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 160, -1));
 
         javax.swing.GroupLayout registro_vuelosLayout = new javax.swing.GroupLayout(registro_vuelos);
         registro_vuelos.setLayout(registro_vuelosLayout);
@@ -802,16 +763,68 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_salirMouseClicked
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-  
+
+        conexion_vuelos objconexion=new conexion_vuelos();
+        Connection cn=objconexion.conexion_vuelos();
+        String sexo;
+        if(botonMasculino.isSelected()== true){
+            sexo="Masculino";
+        }else if (botonfemenino.isSelected()== true){
+            sexo="Femenino";
+        }else{
+            sexo="Masculino";
+        }
+        try {
+            String sql="UPDATE vuelos SET Nombre=?,Apellido=?,sexo=?,tip_documento=?,num_documento=?,num_pasaporte=?,"
+                    + "origen=?,destino=?,fecha_salida=?,fecha_retorno=? WHERE id_vuelos=?";
+            PreparedStatement pst=(PreparedStatement) cn.prepareStatement(sql);
+            int id=Integer.parseInt(txtid_vuelos.getText().trim());
+            pst.setString(1,txtnombre.getText().trim());
+            pst.setString(2,txtapellido.getText().trim());
+            pst.setString(3,sexo);
+            pst.setString(4,cxbtipodocu.getSelectedItem().toString().trim());
+            pst.setString(5,txtnumdocu.getText().trim());
+            pst.setString(6,txtpasaporte.getText().trim());
+            pst.setString(7,cxborigen.getSelectedItem().toString().trim());
+            pst.setString(8,cxbdestino.getSelectedItem().toString().trim());
+            pst.setString(9,((JTextField)fechsali.getDateEditor().getUiComponent()).getText().trim());
+            pst.setString(10,((JTextField)fechretor.getDateEditor().getUiComponent()).getText().trim());
+            pst.setInt(11,id);
+            
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null,"Registro modificado");
+            Limpiarvuelos();
+            MostrarVuelos("vuelos");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Error de Registro"+e.getMessage());
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
-      
+        conexion_vuelos objconexion=new conexion_vuelos();
+        Connection cn=objconexion.conexion_vuelos();  
+        try {
+            Icon a =new ImageIcon(getClass().getResource("/Imagenes/eliminar.png"));
+            int s=JOptionPane.YES_NO_OPTION;
+            int mensaje= JOptionPane.showConfirmDialog(this,"¿Seguro que desea eliminar este registro?","ELIMINAR REGISTRO",s,JOptionPane.YES_NO_OPTION,a);
+            if(mensaje==0){
+               String sql="DELETE FROM vuelos WHERE id_vuelos=?";
+               PreparedStatement pst=(PreparedStatement) cn.prepareStatement(sql);
+               int id=Integer.parseInt(txtid_vuelos.getText().trim());
+               pst.setInt(1,id);
+               pst.executeUpdate();
+               JOptionPane.showMessageDialog(null,"Registro eliminado");
+            }else if(mensaje==1){
+               JOptionPane.showMessageDialog(null,"Se cancelo la eliminación");
+            }
+            
+            Limpiarvuelos();
+            MostrarVuelos("vuelos");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Error de Registro"+e.getMessage());
+        }
     }//GEN-LAST:event_btnBorrarActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-         
-    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
        registro_datos();
@@ -881,14 +894,126 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_txtapellidoKeyTyped
 
     private void txtnumdocuKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnumdocuKeyTyped
-        ValidarLongitudCadena(txtnumdocu.getText(),8, evt);
-                ValidarLetrasNumeros(Character.isLetter(evt.getKeyChar()), evt);
+
+        ValidarLongitudCadena(txtnumdocu.getText(),12, evt);
+                ValidarLetrasNumeros(Character.isLetter(evt.getKeyChar()), evt);     
     }//GEN-LAST:event_txtnumdocuKeyTyped
 
     private void txtpasaporteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasaporteKeyTyped
-       ValidarLongitudCadena(txtpasaporte.getText(),11, evt);
+       ValidarLongitudCadena(txtpasaporte.getText(),12, evt);
                 ValidarLetrasNumeros(Character.isLetter(evt.getKeyChar()), evt);
     }//GEN-LAST:event_txtpasaporteKeyTyped
+
+    private void botonMasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMasculinoActionPerformed
+       sexo="Masculino";
+    }//GEN-LAST:event_botonMasculinoActionPerformed
+
+    private void botonfemeninoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonfemeninoActionPerformed
+       sexo="Femenino";
+    }//GEN-LAST:event_botonfemeninoActionPerformed
+
+    private void tblRegistrovuelosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRegistrovuelosMouseClicked
+         
+        try {
+            int i=tblRegistrovuelos.getSelectedRow();
+            txtid_vuelos.setText((String) model.getValueAt(i, 0));
+            txtnombre.setText(model.getValueAt(i, 1).toString());
+            txtapellido.setText(model.getValueAt(i, 2).toString());
+            String sex=model.getValueAt(i, 3).toString();
+            if(sex.equals("Masculino")){
+                botonMasculino.setSelected(true);
+            }else{
+                botonfemenino.setSelected(true);
+            }
+            String tip_docu=model.getValueAt(i, 4).toString();
+            if(tip_docu.equals("DNI")){
+                cxbtipodocu.setSelectedIndex(1);
+            }else{
+                cxbtipodocu.setSelectedIndex(2);
+            }
+            txtnumdocu.setText(model.getValueAt(i, 5).toString());
+            txtpasaporte.setText(model.getValueAt(i, 6).toString());
+            String origen=model.getValueAt(i, 7).toString();
+            switch(origen){
+                case "Lima":
+                 cxborigen.setSelectedIndex(1);
+                 break;
+                case "Amazonas":
+                 cxborigen.setSelectedIndex(2);
+                 break;
+                case "Ancash":
+                 cxborigen.setSelectedIndex(3);
+                 break;
+                case "Apurimac":
+                 cxborigen.setSelectedIndex(4);
+                 break;
+                case "Arequipa":
+                 cxborigen.setSelectedIndex(5);
+                 break;
+                case "Ayacucho":
+                 cxborigen.setSelectedIndex(6);
+                 break;
+                case "Cajamarca":
+                 cxborigen.setSelectedIndex(7);
+                 break;
+                case "Callao":
+                 cxborigen.setSelectedIndex(8);
+                 break;
+                case "Huancavelica":
+                 cxborigen.setSelectedIndex(9);
+                 break;
+            }
+            String destino=model.getValueAt(i, 8).toString();
+                switch(destino){
+                case "Tokio":
+                    cxbdestino.setSelectedIndex(1);
+                    break;
+                case "New York":
+                    cxbdestino.setSelectedIndex(2);
+                    break;
+                case "Los Angeles":
+                    cxbdestino.setSelectedIndex(3);
+                    break;
+                case "Paris":
+                    cxbdestino.setSelectedIndex(4);
+                    break;
+                case "Seul":
+                    cxbdestino.setSelectedIndex(5);
+                    break;
+                case "Londres":
+                    cxbdestino.setSelectedIndex(6);
+                    break;
+                case "Moscu":
+                    cxbdestino.setSelectedIndex(7);
+                    break;
+                case "Boston":
+                    cxbdestino.setSelectedIndex(8);
+                    break;
+                }
+           
+            Date fechasali=new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(i, 9).toString());
+            Date fecharetor=new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(i, 10).toString()); 
+            fechsali.setDate(fechasali);
+            fechretor.setDate(fecharetor);
+
+        } catch (Exception e) {
+        }
+        
+        
+ 
+         btnAgregar.setEnabled(false);
+         btnEditar.setEnabled(true);
+         btnBorrar.setEnabled(true);
+    }//GEN-LAST:event_tblRegistrovuelosMouseClicked
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+       Limpiarvuelos();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyReleased
+        String buscar=txtbuscar.getText().trim();
+        Buscar(buscar);
+    }//GEN-LAST:event_txtbuscarKeyReleased
     
     
     //METODOS 
@@ -900,15 +1025,17 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     }
     
     public void registro_datos(){
+       
         conexion_vuelos objconexion=new conexion_vuelos();
         Connection cn=objconexion.conexion_vuelos();
         
         try {
-            String sql="INSERT INTO vuelos(Nombre,Apellido,sexo,tip_documento,num_documento,num_pasaporte,origen,destino,fecha_salida,fecha_retorno)VALUES(?,?,?,?,?,?,?,?,?,?)";
+            String sql="INSERT INTO vuelos(id_vuelos,Nombre,Apellido,sexo,tip_documento,num_documento,num_pasaporte,origen,destino,fecha_salida,fecha_retorno)VALUES(null,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst=(PreparedStatement) cn.prepareStatement(sql);
+            //pst.setInt(1,Integer.parseInt(txtid_vuelos.getText().trim()));
             pst.setString(1,txtnombre.getText().trim());
             pst.setString(2,txtapellido.getText().trim());
-            pst.setString(3,txtsexo.getText().trim());
+            pst.setString(3,sexo);
             pst.setString(4,cxbtipodocu.getSelectedItem().toString().trim());
             pst.setString(5,txtnumdocu.getText().trim());
             pst.setString(6,txtpasaporte.getText().trim());
@@ -926,12 +1053,20 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
  
     }
     public void MostrarVuelos (String tabla){
+        while (model.getRowCount()>0) {
+            model.removeRow(0);
+        }
         String sql="SELECT * FROM "+tabla;
         conexion_vuelos con=new conexion_vuelos();
         Connection conexion=con.conexion_vuelos();
         Statement st;
         
-        String []datos=new String[10];
+        
+        String []datos=new String[11];
+        int[]anchos = {4,55,90,44,40,71,71,50,55,55,55};
+        for(int i=0; i<tblRegistrovuelos.getColumnCount();i++){
+            tblRegistrovuelos.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        }
         try {
             st=conexion.createStatement();
             ResultSet rs= st.executeQuery(sql);
@@ -946,6 +1081,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                 datos[7]=rs.getString(8);
                 datos[8]=rs.getString(9);
                 datos[9]=rs.getString(10);
+                datos[10]=rs.getString(11);
                 model.addRow(datos);
             }
         } catch (Exception e) {
@@ -953,7 +1089,45 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         }
     }
     
-    
+    public void Buscar(String texto){
+     
+        conexion_vuelos objconexion=new conexion_vuelos();
+        Connection cn=objconexion.conexion_vuelos();
+         try {
+            String[] titulos={"ID","Nombre","Apellido","sexo","Tipo doc.","N°doc.","Pasaporte","Origen","Destino","Salida","Retorno"};
+            String filtro=""+texto+"%";
+            String sql="";
+            if(texto.equals("")){
+                sql="SELECT * FROM vuelos";
+            }else{
+                sql="SELECT * FROM vuelos WHERE Nombre LIKE"+'"'+filtro+'"';
+            }
+            
+            model=new DefaultTableModel(null,titulos);
+            pst=(PreparedStatement) cn.prepareStatement(sql);
+            ResultSet rs= pst.executeQuery(sql);
+            String[] fila=new String[11];
+            while(rs.next()){
+                fila[0]=rs.getString("id_vuelos");
+                fila[1]=rs.getString("Nombre");
+                fila[2]=rs.getString("Apellido");
+                fila[3]=rs.getString("sexo");
+                fila[4]=rs.getString("tip_documento");
+                fila[5]=rs.getString("num_documento");
+                fila[6]=rs.getString("num_pasaporte");
+                fila[7]=rs.getString("origen");
+                fila[8]=rs.getString("destino");
+                fila[9]=rs.getString("fecha_salida");
+                fila[10]=rs.getString("fecha_retorno");
+                model.addRow(fila);
+            }
+            tblRegistrovuelos.setModel(model);
+            rs.close();
+            pst.close();
+        } catch (Exception e) {
+              JOptionPane.showMessageDialog(null, "Error"+e.toString());        
+        }
+    }
     //VALIDACIÓN DE INGRESO DE DATOS 
     public void ValidarLongitudCadena(String cadena,int tamanio,KeyEvent ev)
     {
@@ -966,7 +1140,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     public void Limpiarvuelos(){
          txtnombre.setText("");
          txtapellido.setText("");
-         txtsexo.setText("");
+         botones_sexo.clearSelection();
          cxbtipodocu.setSelectedIndex(0);
          txtnumdocu.setText("");
          txtpasaporte.setText("");
@@ -974,6 +1148,11 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
          cxbdestino.setSelectedIndex(0);
          fechsali.setCalendar(null);
          fechretor.setCalendar(null);
+         txtnombre.requestFocus();
+         
+        btnAgregar.setEnabled(true);
+        btnEditar.setEnabled(false);
+        btnBorrar.setEnabled(false);
     }
     
     public void Limpiar1(){
@@ -982,14 +1161,16 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     
     public Equipaje recupeDatosGUI(){
         Equipaje OEquipajes=new Equipaje();
-        OEquipajes.setNombre1(txtnombre.getText().trim());
+        OEquipajes.setNombre1(txtnombre1.getText().trim());
         OEquipajes.setApellido1(txtapellido.getText().trim());
-        OEquipajes.setNum_equipaje(txtsexo.getText().trim());
+        OEquipajes.setNum_equipaje(txtnumequipaje.getText().trim());
         OEquipajes.setPeso(cxbtipodocu.getSelectedItem().toString().trim());
         OEquipajes.setPrecio(txtnumdocu.getText().trim());
         
         return OEquipajes;
     }
+  
+    
     
     
     public static void main(String args[]) {
@@ -1025,6 +1206,9 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton botonMasculino;
+    private javax.swing.ButtonGroup botones_sexo;
+    private javax.swing.JRadioButton botonfemenino;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnAgregar1;
     private javax.swing.JButton btnBorrar;
@@ -1059,6 +1243,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1087,6 +1272,8 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JTable tblRegistrovuelos;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtapellido1;
+    private javax.swing.JTextField txtbuscar;
+    private javax.swing.JTextField txtid_vuelos;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txtnombre1;
     private javax.swing.JTextField txtnumdocu;
@@ -1094,6 +1281,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JTextField txtpasaporte;
     private javax.swing.JTextField txtpeso;
     private javax.swing.JTextField txtprecio;
-    private javax.swing.JTextField txtsexo;
     // End of variables declaration//GEN-END:variables
+private String sexo;
 }
+
