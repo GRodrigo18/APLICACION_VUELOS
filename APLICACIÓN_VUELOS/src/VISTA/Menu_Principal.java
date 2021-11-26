@@ -6,6 +6,7 @@ import CONTROLADOR.conexion_vuelos;
 import MODELO.Equipaje;
 import com.mysql.jdbc.PreparedStatement;
 import java.awt.event.KeyEvent;
+import java.awt.print.PrinterException;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.Date;
@@ -123,6 +124,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         btnCancelar = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
         txtbuscar = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         registro_equipaje1 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -410,9 +412,12 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         fechretor.setDateFormatString("yyyy-MM-dd");
         jPanel4.add(fechretor, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 161, 131, -1));
 
+        btnEditar.setBackground(new java.awt.Color(0, 0, 0));
         btnEditar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(0, 0, 0));
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
         btnEditar.setText("Editar");
+        btnEditar.setContentAreaFilled(false);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -421,8 +426,10 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jPanel4.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, -1, -1));
 
         btnBorrar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        btnBorrar.setForeground(new java.awt.Color(0, 0, 0));
         btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrar.png"))); // NOI18N
         btnBorrar.setText("Borrar");
+        btnBorrar.setContentAreaFilled(false);
         btnBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBorrarActionPerformed(evt);
@@ -431,8 +438,10 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jPanel4.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, -1, -1));
 
         btnAgregar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(0, 0, 0));
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/agregar-archivo.png"))); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.setContentAreaFilled(false);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
@@ -473,8 +482,10 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jPanel4.add(botonfemenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, 20));
 
         btnCancelar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.setContentAreaFilled(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -494,6 +505,21 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
             }
         });
         jPanel4.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 160, -1));
+
+        jButton1.setBackground(new java.awt.Color(175, 209, 236));
+        jButton1.setForeground(new java.awt.Color(175, 209, 236));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/impresion.png"))); // NOI18N
+        jButton1.setText(" ");
+        jButton1.setBorder(null);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 120, 60));
 
         javax.swing.GroupLayout registro_vuelosLayout = new javax.swing.GroupLayout(registro_vuelos);
         registro_vuelos.setLayout(registro_vuelosLayout);
@@ -1051,6 +1077,12 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         String buscar=txtbuscar.getText().trim();
         BuscarNombre(buscar);
     }//GEN-LAST:event_txtbuscarKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+             try {
+                 tblRegistrovuelos.print(); // Imprime el jTable
+                 } catch (PrinterException ex) { } // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     
     //METODOS 
@@ -1263,6 +1295,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     private com.toedter.calendar.JDateChooser fechsali;
     private javax.swing.JLabel infoVuelos;
     private javax.swing.JPanel info_vuelos;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
