@@ -35,13 +35,14 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         String[] titulos={"ID","Nombre","Apellido","sexo","Tipo doc.","N°doc.","Pasaporte","Origen","Destino","Salida","Retorno"};
         model=new DefaultTableModel(null,titulos);
         tblRegistrovuelos.setModel(model);
-        
-        String[] titulo = {"Nombre","Apellido","N°equip.","Peso","Precio"};
-        modelo=new DefaultTableModel(null,titulo);
-        tbRegistroequipaje.setModel(modelo);
         MostrarVuelos("vuelos");
         Limpiarvuelos();
-
+        
+        String[] titulo = {"ID","Nombre","Apellido","N°equip.","Peso","Precio"};
+        modelo=new DefaultTableModel(null,titulo);
+        tbRegistroequipaje.setModel(modelo);
+        MostrarEquipaje("equipaje");
+        LimpiarEquipaje();
     }
     public void hora()
     {
@@ -136,14 +137,19 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jLabel5 = new javax.swing.JLabel();
         txtapellido1 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtpeso = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbRegistroequipaje = new javax.swing.JTable();
         btnAgregar1 = new javax.swing.JButton();
         btnBorrar1 = new javax.swing.JButton();
         btnEditar1 = new javax.swing.JButton();
         btnCancelar1 = new javax.swing.JButton();
-        txtprecio = new javax.swing.JTextField();
+        cmbpeso = new javax.swing.JComboBox<>();
+        cmbprecio = new javax.swing.JComboBox<>();
+        jLabel30 = new javax.swing.JLabel();
+        txtbuscar1 = new javax.swing.JTextField();
+        btnPrecios = new javax.swing.JButton();
+        btnCalcular = new javax.swing.JButton();
+        txtid_equipaje = new javax.swing.JTextField();
         info_vuelos = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -277,7 +283,6 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel15.setBackground(new java.awt.Color(175, 209, 236));
         jLabel15.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("REGISTRO DE VUELOS ");
         jLabel15.setOpaque(true);
@@ -286,7 +291,6 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Buscar:");
         jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
@@ -300,7 +304,6 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jPanel4.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 14, 172, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Apellidos:");
         jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 53, 65, -1));
 
@@ -314,12 +317,10 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jPanel4.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 52, 172, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Sexo:");
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, 20));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Tipo de documento:");
         jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 15, -1, -1));
 
@@ -328,7 +329,6 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jPanel4.add(cxbtipodocu, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 14, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Número de documento:");
         jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 53, -1, -1));
 
@@ -342,7 +342,6 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jPanel4.add(txtnumdocu, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 52, 125, -1));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Pasaporte:");
         jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 84, -1, -1));
 
@@ -356,12 +355,10 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jPanel4.add(txtpasaporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 83, 127, -1));
 
         jLabel19.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("Origen:");
         jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, -1, -1));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("Destino:");
         jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 128, -1, -1));
 
@@ -374,12 +371,10 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jPanel4.add(cxbdestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 127, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("Fecha de salida:");
         jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 133, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("Fecha de retorno:");
         jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 161, -1, -1));
 
@@ -394,7 +389,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblRegistrovuelos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tblRegistrovuelos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tblRegistrovuelos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblRegistrovuelosMouseClicked(evt);
@@ -414,7 +409,6 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
 
         btnEditar.setBackground(new java.awt.Color(0, 0, 0));
         btnEditar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(0, 0, 0));
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.setContentAreaFilled(false);
@@ -426,7 +420,6 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jPanel4.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, -1, -1));
 
         btnBorrar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        btnBorrar.setForeground(new java.awt.Color(0, 0, 0));
         btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrar.png"))); // NOI18N
         btnBorrar.setText("Borrar");
         btnBorrar.setContentAreaFilled(false);
@@ -438,7 +431,6 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jPanel4.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, -1, -1));
 
         btnAgregar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        btnAgregar.setForeground(new java.awt.Color(0, 0, 0));
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/agregar-archivo.png"))); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.setContentAreaFilled(false);
@@ -454,13 +446,11 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         txtid_vuelos.setForeground(new java.awt.Color(175, 209, 236));
         txtid_vuelos.setText(" ");
         txtid_vuelos.setBorder(null);
-        txtid_vuelos.setOpaque(true);
         jPanel4.add(txtid_vuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 528, -1, -1));
 
         botonMasculino.setBackground(new java.awt.Color(175, 209, 236));
         botones_sexo.add(botonMasculino);
         botonMasculino.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        botonMasculino.setForeground(new java.awt.Color(0, 0, 0));
         botonMasculino.setText("Masculino");
         botonMasculino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -472,7 +462,6 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         botonfemenino.setBackground(new java.awt.Color(175, 209, 236));
         botones_sexo.add(botonfemenino);
         botonfemenino.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        botonfemenino.setForeground(new java.awt.Color(0, 0, 0));
         botonfemenino.setText("Femenino");
         botonfemenino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -482,7 +471,6 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jPanel4.add(botonfemenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, 20));
 
         btnCancelar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setContentAreaFilled(false);
@@ -494,7 +482,6 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jPanel4.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 210, -1, -1));
 
         jLabel27.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(0, 0, 0));
         jLabel27.setText("Nombres:");
         jPanel4.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 15, -1, -1));
 
@@ -512,7 +499,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jButton1.setText(" ");
         jButton1.setBorder(null);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -583,6 +570,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jScrollPane2.setViewportView(tbRegistroequipaje);
 
         btnAgregar1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnAgregar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/agregar-archivo.png"))); // NOI18N
         btnAgregar1.setText("AGREGAR");
         btnAgregar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -591,12 +579,25 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         });
 
         btnBorrar1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnBorrar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrar.png"))); // NOI18N
         btnBorrar1.setText("BORRAR");
+        btnBorrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrar1ActionPerformed(evt);
+            }
+        });
 
         btnEditar1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
         btnEditar1.setText("EDITAR");
+        btnEditar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditar1ActionPerformed(evt);
+            }
+        });
 
         btnCancelar1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnCancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         btnCancelar1.setText("CANCELAR");
         btnCancelar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -604,47 +605,100 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
             }
         });
 
+        cmbpeso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "4", "8", "10", "12", "4", "16", "18", "24" }));
+
+        cmbprecio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "20", "40", "50", "60", "70", "80", "90", "120" }));
+
+        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar.png"))); // NOI18N
+        jLabel30.setText("BUSCAR:");
+
+        txtbuscar1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbuscar1KeyReleased(evt);
+            }
+        });
+
+        btnPrecios.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnPrecios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/etiqueta-de-precio.png"))); // NOI18N
+        btnPrecios.setText("PRECIOS");
+        btnPrecios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPreciosActionPerformed(evt);
+            }
+        });
+
+        btnCalcular.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnCalcular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/calculadora-cientifica.png"))); // NOI18N
+        btnCalcular.setText("CALCULAR");
+        btnCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalcularActionPerformed(evt);
+            }
+        });
+
+        txtid_equipaje.setEditable(false);
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
+                .addGap(56, 56, 56)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addGap(271, 271, 271)
-                        .addComponent(btnBorrar1)
-                        .addGap(75, 75, 75)
-                        .addComponent(btnCancelar1))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(btnAgregar1)
-                        .addGap(73, 73, 73)
-                        .addComponent(btnEditar1))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtapellido1))))
-                        .addGap(33, 33, 33)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel11))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtapellido1)
+                                    .addComponent(cmbpeso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtnumequipaje, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(38, 38, 38)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(jLabel26)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cmbprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtnumequipaje, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(300, Short.MAX_VALUE))
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel30)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtbuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(btnAgregar1)
+                        .addGap(46, 46, 46)
+                        .addComponent(btnEditar1)
+                        .addGap(46, 46, 46)
+                        .addComponent(btnBorrar1)
+                        .addGap(38, 38, 38)
+                        .addComponent(btnCancelar1))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(txtid_equipaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCalcular)
+                .addGap(27, 27, 27)
+                .addComponent(btnPrecios)
+                .addGap(163, 163, 163))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -652,7 +706,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtnumequipaje, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtnumequipaje, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel6)
                     .addComponent(txtnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -661,30 +715,44 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                     .addComponent(jLabel5)
                     .addComponent(txtapellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel26)
-                    .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(jLabel11))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(cmbpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(67, 67, 67))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAgregar1)
-                            .addComponent(btnEditar1)
-                            .addComponent(btnBorrar1)
-                            .addComponent(btnCancelar1)))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel30)
+                            .addComponent(txtbuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(45, 45, 45)))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEditar1)
+                    .addComponent(btnBorrar1)
+                    .addComponent(btnCancelar1)
+                    .addComponent(btnAgregar1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtid_equipaje, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCalcular)
+                    .addComponent(btnPrecios))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout registro_equipaje1Layout = new javax.swing.GroupLayout(registro_equipaje1);
         registro_equipaje1.setLayout(registro_equipaje1Layout);
         registro_equipaje1Layout.setHorizontalGroup(
             registro_equipaje1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 850, Short.MAX_VALUE)
+            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         registro_equipaje1Layout.setVerticalGroup(
@@ -703,7 +771,6 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel24.setBackground(new java.awt.Color(175, 209, 236));
         jLabel24.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("INFORMACIÓN DE VUELOS");
         jLabel24.setOpaque(true);
@@ -896,42 +963,171 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar1ActionPerformed
-        conexion_equipaje Objconexion= new conexion_equipaje();
-        Equipaje Oequipaje= recupeDatosGUI();
-        String strSentenciaInsert=String.format("INSERT INTO equipaje(Nombre,Apellido,Num_equipaje,Peso,Precio) "
-            + "VALUES ('%s','%s','%s','%s','%s')",Oequipaje.getNombre1(),Oequipaje.getApellido1(),Oequipaje.getNum_equipaje(),Oequipaje.getPeso(),Oequipaje.getPrecio());
-
-        Objconexion.ejecutarsentenciasql(strSentenciaInsert);
-         
+        regist_datos();
+        MostrarEquipaje("equipaje");
+        LimpiarEquipaje();
     }//GEN-LAST:event_btnAgregar1ActionPerformed
-     
-    
-    public void MostrarDatos1(){
+    public void regist_datos(){
+       
+        conexion_equipaje objconexion=new conexion_equipaje();
+        Connection cn=objconexion.conexion_equipaje();
+        
+        try {
+            String sql="INSERT INTO equipaje(id_equipaje,Nombre,Apellido,Nºequip.,Peso,Precio)VALUES(null,?,?,?,?,?)";
+            PreparedStatement pst=(PreparedStatement) cn.prepareStatement(sql);
+            //pst.setInt(1,Integer.parseInt(txtid_equipaje.getText().trim()));
+            pst.setString(1,txtnombre1.getText().trim());
+            pst.setString(2,txtapellido1.getText().trim());
+            pst.setString(3,txtnumequipaje.getText().trim());
+            pst.setString(4,cmbpeso.getSelectedItem().toString().trim());
+            pst.setString(5,cmbprecio.getSelectedItem().toString().trim());
+            
+            pst.execute();
+            
+            JOptionPane.showMessageDialog(null,"Registro Exitoso");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Error de Registro"+e.getMessage());
+        }
+ 
+    }
+    public void MostrarEquipaje(String tabla){
         while (modelo.getRowCount()>0) {
             modelo.removeRow(0);
         }
-        conexion_equipaje Objconexion=new conexion_equipaje();
+        String sql="SELECT * FROM "+tabla;
+        conexion_equipaje con=new conexion_equipaje();
+        Connection conexion=con.conexion_equipaje();
+        Statement st;
+        
+        
+        String []datos=new String[11];
+        int[]anchos = {40,55,50,55,55,55};
+        for(int i=0; i<tbRegistroequipaje.getColumnCount();i++){
+            tbRegistroequipaje.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        }
         try {
-            ResultSet resultado=Objconexion.consultarRegistros("SELECT * FROM equipaje");
-            while (resultado.next()) {                
-                System.out.println(resultado.getString("Nombre"));
-                System.out.println(resultado.getString("Apellido"));
-                System.out.println(resultado.getString("Num_equipaje"));
-                System.out.println(resultado.getString("Peso"));
-                System.out.println(resultado.getString("Precio"));
-                Object[] Oequipaje={resultado.getString("Nombre"),resultado.getString("Apellido"),resultado.getString("Correo")};
-                modelo.addRow(Oequipaje);
+            st=conexion.createStatement();
+            ResultSet rs= st.executeQuery(sql);
+            while (rs.next()) {                
+                datos[0]=rs.getString(1);
+                datos[1]=rs.getString(2);
+                datos[2]=rs.getString(3);
+                datos[3]=rs.getString(4);
+                datos[4]=rs.getString(5);
+                datos[5]=rs.getString(6);
+                modelo.addRow(datos);
             }
         } catch (Exception e) {
-            System.out.println(e);
-        }   
+            JOptionPane.showMessageDialog(null, "Error"+e.toString());
+        }
     }
     
     private void tbRegistroequipajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRegistroequipajeMouseClicked
+try {
+            int i=tbRegistroequipaje.getSelectedRow();
+            txtid_equipaje.setText((String) modelo.getValueAt(i, 0));
+            txtnombre1.setText(modelo.getValueAt(i, 1).toString());
+            txtapellido1.setText(modelo.getValueAt(i, 2).toString());
+            txtnumequipaje.setText(modelo.getValueAt(i, 3).toString());
+            String peso=modelo.getValueAt(i, 4).toString();
+            switch(peso){
+                case "4":
+                 cmbpeso.setSelectedIndex(1);
+                 break;
+                case "8":
+                 cmbpeso.setSelectedIndex(2);
+                 break;
+                case "10":
+                 cmbpeso.setSelectedIndex(3);
+                 break;
+                case "12":
+                 cmbpeso.setSelectedIndex(4);
+                 break;
+                case "14":
+                 cmbpeso.setSelectedIndex(5);
+                 break;
+                case "16":
+                 cmbpeso.setSelectedIndex(6);
+                 break;
+                case "18":
+                 cmbpeso.setSelectedIndex(7);
+                 break;
+                case "24":
+                 cmbpeso.setSelectedIndex(8);
+                 break;
+            }
+            String precio=modelo.getValueAt(i, 5).toString();
+                switch(precio){
+                case "20":
+                    cmbprecio.setSelectedIndex(1);
+                    break;
+                case "New 40":
+                    cmbprecio.setSelectedIndex(2);
+                    break;
+                case "50":
+                    cmbprecio.setSelectedIndex(3);
+                    break;
+                case "60":
+                    cmbprecio.setSelectedIndex(4);
+                    break;
+                case "70":
+                    cmbprecio.setSelectedIndex(5);
+                    break;
+                case "80":
+                    cmbprecio.setSelectedIndex(6);
+                    break;
+                case "90":
+                    cmbprecio.setSelectedIndex(7);
+                    break;
+                case "120":
+                    cmbprecio.setSelectedIndex(8);
+                    break;
+                }
+
+        } catch (Exception e) {
+        }
+       
+         btnAgregar.setEnabled(false);
+         btnEditar.setEnabled(true);
+         btnBorrar.setEnabled(true);
     }//GEN-LAST:event_tbRegistroequipajeMouseClicked
 
+    public void BuscarNombreEqui(String texto){
+     
+        conexion_equipaje objconexion=new conexion_equipaje();
+        Connection cn=objconexion.conexion_equipaje();
+         try {
+            String[] titulos={"ID","Nombre","Apellido","Nºequip.","Peso","Precio"};
+            String filtro=""+texto+"%";
+            String sql="";
+            if(texto.equals("")){
+                sql="SELECT * FROM equipaje";
+            }else{
+                sql="SELECT * FROM equipaje WHERE Nombre LIKE"+'"'+filtro+'"';
+            }
+            
+            modelo=new DefaultTableModel(null,titulos);
+            pst=(PreparedStatement) cn.prepareStatement(sql);
+            ResultSet rs= pst.executeQuery(sql);
+            String[] fila=new String[6];
+            while(rs.next()){
+                fila[0]=rs.getString("id_equipaje");
+                fila[1]=rs.getString("Nombre");
+                fila[2]=rs.getString("Apellido");
+                fila[4]=rs.getString("Nºequip.");
+                fila[5]=rs.getString("Peso");
+                fila[6]=rs.getString("Precio");
+                modelo.addRow(fila);
+            }
+            tbRegistroequipaje.setModel(modelo);
+            rs.close();
+            pst.close();
+        } catch (Exception e) {
+              JOptionPane.showMessageDialog(null, "Error"+e.toString());        
+        }
+    }
     private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
-      
+      LimpiarEquipaje();
     }//GEN-LAST:event_btnCancelar1ActionPerformed
 
     private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
@@ -1083,7 +1279,95 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                  tblRegistrovuelos.print(); // Imprime el jTable
                  } catch (PrinterException ex) { } // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnBorrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar1ActionPerformed
+        conexion_equipaje objconexion=new conexion_equipaje();
+        Connection cn=objconexion.conexion_equipaje();  
+        try {
+            Icon a =new ImageIcon(getClass().getResource("/Imagenes/eliminar.png"));
+            int s=JOptionPane.YES_NO_OPTION;
+            int mensaje= JOptionPane.showConfirmDialog(this,"¿Seguro que desea eliminar este registro?","ELIMINAR REGISTRO",s,JOptionPane.YES_NO_OPTION,a);
+            if(mensaje==0){
+               String sql="DELETE FROM equipaje WHERE id_equipaje=?";
+               PreparedStatement pst=(PreparedStatement) cn.prepareStatement(sql);
+               int id=Integer.parseInt(txtid_equipaje.getText().trim());
+               pst.setInt(1,id);
+               pst.executeUpdate();
+               JOptionPane.showMessageDialog(null,"Registro eliminado");
+            }else if(mensaje==1){
+               JOptionPane.showMessageDialog(null,"Se cancelo la eliminación");
+            }
+            
+            LimpiarEquipaje();
+            MostrarEquipaje("equipaje");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Error de Registro"+e.getMessage());
+        }
+    }//GEN-LAST:event_btnBorrar1ActionPerformed
+
+    private void btnPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreciosActionPerformed
+        JOptionPane.showMessageDialog(null,
+                        "Peso de la maleta      Precio en S/."
+                        +"\n4Kg                                        20"
+                        +"\n8Kg                                        40"
+                        +"\n10Kg                                      50"
+                        +"\n12Kg                                      60"
+                        +"\n14Kg                                      70"
+                        +"\n16Kg                                      80"
+                        +"\n18Kg                                      90"
+                        +"\n24Kg                                      120",
+                        "Panel de precios", WIDTH);
+    }//GEN-LAST:event_btnPreciosActionPerformed
+
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
+        Total();
+    }//GEN-LAST:event_btnCalcularActionPerformed
+
+    private void txtbuscar1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscar1KeyReleased
+        String buscar=txtbuscar1.getText().trim();
+        BuscarNombreEqui(buscar);
+    }//GEN-LAST:event_txtbuscar1KeyReleased
+
+    private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
+        conexion_equipaje objconexion=new conexion_equipaje();
+        Connection cn=objconexion.conexion_equipaje();
+        
+        try {
+            String sql="UPDATE equipaje SET Nombre=?,Apellido=?,Nºequip.=?,Peso=?,Precio=? WHERE id_equipaje=?";
+            PreparedStatement pst=(PreparedStatement) cn.prepareStatement(sql);
+            int id=Integer.parseInt(txtid_equipaje.getText().trim());
+            pst.setString(1,txtnombre1.getText().trim());
+            pst.setString(2,txtapellido1.getText().trim());
+            pst.setString(3,txtnumequipaje.getText().trim());
+            pst.setString(4,cmbpeso.getSelectedItem().toString().trim());
+            pst.setString(8,cmbprecio.getSelectedItem().toString().trim());
+            pst.setInt(6,id);
+            
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null,"Registro modificado");
+            LimpiarEquipaje();
+            MostrarEquipaje("equipaje");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Error de Registro"+e.getMessage());
+        }
+    }//GEN-LAST:event_btnEditar1ActionPerformed
     
+    private void Total()
+    {
+        double t=0;
+        double p=0;
+        if(tbRegistroequipaje.getRowCount()>0)
+        {
+            for(int i=0; i<tbRegistroequipaje.getRowCount();i++)
+            {
+                p=Double.parseDouble(tbRegistroequipaje.getValueAt(i,5).toString());
+                t+=p;
+            }
+            JOptionPane.showMessageDialog(null,"El total es:"+t);
+        }
+        
+    }
     
     //METODOS 
     public static String fecha()
@@ -1226,13 +1510,22 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         btnBorrar.setEnabled(false);
     }
     
-    public void Limpiar1(){
-        
+    public void LimpiarEquipaje(){
+         txtnombre1.setText("");
+         txtapellido1.setText("");
+         txtnumequipaje.setText("");
+         cmbpeso.setSelectedIndex(0);
+         cmbprecio.setSelectedIndex(0);
+         txtnombre1.requestFocus();
+         
+        btnAgregar.setEnabled(true);
+        btnEditar.setEnabled(false);
+        btnBorrar.setEnabled(false);
     }
     
     public Equipaje recupeDatosGUI(){
         Equipaje OEquipajes=new Equipaje();
-        OEquipajes.setNombre1(txtnombre1.getText().trim());
+        OEquipajes.setNombre1(txtnombre.getText().trim());
         OEquipajes.setApellido1(txtapellido.getText().trim());
         OEquipajes.setNum_equipaje(txtnumequipaje.getText().trim());
         OEquipajes.setPeso(cxbtipodocu.getSelectedItem().toString().trim());
@@ -1284,10 +1577,14 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JButton btnAgregar1;
     private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnBorrar1;
+    private javax.swing.JButton btnCalcular;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCancelar1;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEditar1;
+    private javax.swing.JButton btnPrecios;
+    private javax.swing.JComboBox<String> cmbpeso;
+    private javax.swing.JComboBox<String> cmbprecio;
     private javax.swing.JComboBox<String> cxbdestino;
     private javax.swing.JComboBox<String> cxborigen;
     private javax.swing.JComboBox<String> cxbtipodocu;
@@ -1319,6 +1616,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1349,14 +1647,14 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtapellido1;
     private javax.swing.JTextField txtbuscar;
+    private javax.swing.JTextField txtbuscar1;
+    private javax.swing.JTextField txtid_equipaje;
     private javax.swing.JTextField txtid_vuelos;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txtnombre1;
     private javax.swing.JTextField txtnumdocu;
     private javax.swing.JTextField txtnumequipaje;
     private javax.swing.JTextField txtpasaporte;
-    private javax.swing.JTextField txtpeso;
-    private javax.swing.JTextField txtprecio;
     // End of variables declaration//GEN-END:variables
 private String sexo;
 }

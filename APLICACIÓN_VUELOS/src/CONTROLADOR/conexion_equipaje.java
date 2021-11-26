@@ -6,21 +6,26 @@ import com.mysql.jdbc.PreparedStatement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 public class conexion_equipaje {
-    Connection con = null;
-        
-     public conexion_equipaje(){
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-                con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/bdsistema_vuelos","root","");
-                System.out.println("Conexion establecida");
-            
-            } catch (Exception e) {
-                System.out.println("Error de conexión"+e);
-            }
-        }
-        public int ejecutarsentenciasql(String strSentenciasql){
+     public static Statement createStatement() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+     Connection con=null;
+     
+     public Connection conexion_equipaje(){
+         try {
+             Class.forName("com.mysql.jdbc.Driver");
+             con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost/bdsistema_vuelos","root","");
+             System.err.println("Conexion establecida");
+         } catch (ClassNotFoundException | SQLException e) {
+              JOptionPane.showMessageDialog(null, "Error de conexión"+e.getMessage());
+         }
+         return con;
+     }
+     public int ejecutarsentenciasql(String strSentenciasql){
             try {
                 PreparedStatement pstm=(PreparedStatement) con.prepareStatement(strSentenciasql);
                 pstm.execute();
@@ -28,17 +33,6 @@ public class conexion_equipaje {
             } catch (SQLException e) {
                 System.out.print(e);
                 return 0;
-            }
-        }
-        public ResultSet consultarRegistros(String strSentenciasql){
-            try {
-                PreparedStatement pstm=(PreparedStatement) con.prepareStatement(strSentenciasql);
-                ResultSet respuesta = pstm.executeQuery();
-                return respuesta;
-                
-            } catch (Exception e) {
-                System.out.println(e);
-                return null;
             }
         }
 }
