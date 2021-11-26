@@ -1,7 +1,5 @@
  
 package VISTA;
- 
-import CONTROLADOR.Metodos_sql_Usuario;
 import CONTROLADOR.conexion_equipaje;
 import java.sql.ResultSet;
 import CONTROLADOR.conexion_vuelos;
@@ -147,6 +145,10 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         info_vuelos = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -675,28 +677,63 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel24.setBackground(new java.awt.Color(175, 209, 236));
         jLabel24.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("INFORMACIÓN DE VUELOS");
         jLabel24.setOpaque(true);
 
         jPanel7.setBackground(new java.awt.Color(175, 209, 236));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jLabel28.setFont(new java.awt.Font("Script MT Bold", 0, 24)); // NOI18N
+        jLabel28.setText("ORIGENES DISPONIBLES");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 577, Short.MAX_VALUE)
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel28)
+                .addContainerGap(419, Short.MAX_VALUE))
         );
+
+        jPanel7.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 37, -1, -1));
+
+        jLabel29.setFont(new java.awt.Font("Script MT Bold", 0, 24)); // NOI18N
+        jLabel29.setText("DESTINOS DISPONIBLES");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel29)
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel29)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel7.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(447, 37, 370, 478));
 
         javax.swing.GroupLayout info_vuelosLayout = new javax.swing.GroupLayout(info_vuelos);
         info_vuelos.setLayout(info_vuelosLayout);
         info_vuelosLayout.setHorizontalGroup(
             info_vuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 850, Short.MAX_VALUE)
+            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         info_vuelosLayout.setVerticalGroup(
@@ -1012,7 +1049,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
 
     private void txtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyReleased
         String buscar=txtbuscar.getText().trim();
-        Buscar(buscar);
+        BuscarNombre(buscar);
     }//GEN-LAST:event_txtbuscarKeyReleased
     
     
@@ -1089,7 +1126,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         }
     }
     
-    public void Buscar(String texto){
+    public void BuscarNombre(String texto){
      
         conexion_vuelos objconexion=new conexion_vuelos();
         Connection cn=objconexion.conexion_vuelos();
@@ -1128,6 +1165,8 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
               JOptionPane.showMessageDialog(null, "Error"+e.toString());        
         }
     }
+    
+    
     //VALIDACIÓN DE INGRESO DE DATOS 
     public void ValidarLongitudCadena(String cadena,int tamanio,KeyEvent ev)
     {
@@ -1244,6 +1283,8 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1258,6 +1299,8 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblfechactual;
