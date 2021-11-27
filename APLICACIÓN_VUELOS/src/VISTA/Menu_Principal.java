@@ -154,6 +154,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         btnPrecios = new javax.swing.JButton();
         btnCalcular = new javax.swing.JButton();
         txtid_equipaje = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         info_vuelos = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -549,12 +550,14 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
 
         registro_equipaje1.setBackground(new java.awt.Color(255, 255, 255));
         registro_equipaje1.setForeground(new java.awt.Color(255, 255, 255));
+        registro_equipaje1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel23.setBackground(new java.awt.Color(175, 209, 236));
         jLabel23.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("REGISTRO DE EQUIPAJE");
         jLabel23.setOpaque(true);
+        registro_equipaje1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, -1));
 
         jPanel6.setBackground(new java.awt.Color(175, 209, 236));
 
@@ -594,6 +597,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         btnAgregar1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnAgregar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/agregar-archivo.png"))); // NOI18N
         btnAgregar1.setText("AGREGAR");
+        btnAgregar1.setContentAreaFilled(false);
         btnAgregar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregar1ActionPerformed(evt);
@@ -603,6 +607,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         btnBorrar1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnBorrar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrar.png"))); // NOI18N
         btnBorrar1.setText("BORRAR");
+        btnBorrar1.setContentAreaFilled(false);
         btnBorrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBorrar1ActionPerformed(evt);
@@ -612,6 +617,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         btnEditar1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
         btnEditar1.setText("EDITAR");
+        btnEditar1.setContentAreaFilled(false);
         btnEditar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditar1ActionPerformed(evt);
@@ -621,15 +627,16 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         btnCancelar1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnCancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         btnCancelar1.setText("CANCELAR");
+        btnCancelar1.setContentAreaFilled(false);
         btnCancelar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelar1ActionPerformed(evt);
             }
         });
 
-        cmbpeso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "4", "8", "10", "12", "4", "16", "18", "24" }));
+        cmbpeso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "4 kg", "8 kg", "10 kg", "12 kg", "14 kg", "16 kg", "18 kg", "24 kg", " " }));
 
-        cmbprecio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "20", "40", "50", "60", "70", "80", "90", "120" }));
+        cmbprecio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "S/20", "S/40", "S/50", "S/60", "S/70", "S/80", "S/90", "S/120" }));
 
         jLabel30.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar.png"))); // NOI18N
@@ -661,6 +668,20 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
 
         txtid_equipaje.setEditable(false);
 
+        jButton2.setBackground(new java.awt.Color(175, 209, 236));
+        jButton2.setForeground(new java.awt.Color(175, 209, 236));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/impresion.png"))); // NOI18N
+        jButton2.setText(" ");
+        jButton2.setBorder(null);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -668,6 +689,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtid_equipaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel6Layout.createSequentialGroup()
@@ -682,64 +704,68 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(38, 38, 38)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel6Layout.createSequentialGroup()
-                                        .addComponent(jLabel26)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cmbprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel6Layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtnumequipaje, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(300, Short.MAX_VALUE))
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtnumequipaje, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel30)
+                                .addComponent(jLabel26)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtbuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(btnAgregar1)
-                        .addGap(46, 46, 46)
-                        .addComponent(btnEditar1)
-                        .addGap(46, 46, 46)
-                        .addComponent(btnBorrar1)
-                        .addGap(38, 38, 38)
-                        .addComponent(btnCancelar1))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(txtid_equipaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCalcular)
-                .addGap(27, 27, 27)
-                .addComponent(btnPrecios)
-                .addGap(163, 163, 163))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(jLabel30)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtbuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(cmbprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton2)))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(66, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(btnAgregar1)
+                        .addGap(69, 69, 69)
+                        .addComponent(btnEditar1)
+                        .addGap(62, 62, 62)
+                        .addComponent(btnBorrar1)
+                        .addGap(39, 39, 39)
+                        .addComponent(btnCancelar1)
+                        .addGap(121, 121, 121))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(btnCalcular)
+                                .addGap(34, 34, 34)
+                                .addComponent(btnPrecios))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47))))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtnumequipaje, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel6)
-                    .addComponent(txtnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtapellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel26)
-                    .addComponent(cmbprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtnumequipaje, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel6)
+                            .addComponent(txtnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtapellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel26)
+                            .addComponent(cmbprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jButton2)))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGap(38, 38, 38)
@@ -747,44 +773,30 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
                                 .addComponent(cmbpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(67, 67, 67))
+                        .addGap(111, 111, 111))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel30)
                             .addComponent(txtbuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(45, 45, 45)))
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEditar1)
-                    .addComponent(btnBorrar1)
-                    .addComponent(btnCancelar1)
-                    .addComponent(btnAgregar1))
-                .addGap(18, 18, 18)
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCancelar1)
+                            .addComponent(btnBorrar1)
+                            .addComponent(btnEditar1)
+                            .addComponent(btnAgregar1))
+                        .addGap(21, 21, 21)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(txtid_equipaje, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCalcular)
                     .addComponent(btnPrecios))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout registro_equipaje1Layout = new javax.swing.GroupLayout(registro_equipaje1);
-        registro_equipaje1.setLayout(registro_equipaje1Layout);
-        registro_equipaje1Layout.setHorizontalGroup(
-            registro_equipaje1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        registro_equipaje1Layout.setVerticalGroup(
-            registro_equipaje1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(registro_equipaje1Layout.createSequentialGroup()
-                .addComponent(jLabel23)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        registro_equipaje1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 43, 850, 580));
 
         jPanel5.add(registro_equipaje1, "card3");
 
@@ -802,13 +814,14 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
 
         jPanel8.setBackground(new java.awt.Color(209, 249, 255));
 
-        jLabel28.setFont(new java.awt.Font("Script MT Bold", 0, 24)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Segoe Print", 0, 24)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(0, 51, 204));
         jLabel28.setText("ORIGENES DISPONIBLES");
 
         jlima.setBackground(new java.awt.Color(255, 255, 255));
         jlima.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jlima.setText("Lima");
+        jlima.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jlima.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlimaMouseClicked(evt);
@@ -818,6 +831,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jamazonas.setBackground(new java.awt.Color(255, 255, 255));
         jamazonas.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jamazonas.setText("Amazonas");
+        jamazonas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jamazonas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jamazonasMouseClicked(evt);
@@ -827,6 +841,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jlancash.setBackground(new java.awt.Color(255, 255, 255));
         jlancash.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jlancash.setText("Ancash");
+        jlancash.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jlancash.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlancashMouseClicked(evt);
@@ -836,6 +851,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         japurimac.setBackground(new java.awt.Color(255, 255, 255));
         japurimac.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         japurimac.setText("Apurimac");
+        japurimac.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         japurimac.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 japurimacMouseClicked(evt);
@@ -845,6 +861,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jarequipa.setBackground(new java.awt.Color(255, 255, 255));
         jarequipa.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jarequipa.setText("Arequipa");
+        jarequipa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jarequipa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jarequipaMouseClicked(evt);
@@ -854,6 +871,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jayacucho.setBackground(new java.awt.Color(255, 255, 255));
         jayacucho.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jayacucho.setText("Ayacucho");
+        jayacucho.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jayacucho.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jayacuchoMouseClicked(evt);
@@ -863,6 +881,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jcajamarca.setBackground(new java.awt.Color(255, 255, 255));
         jcajamarca.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jcajamarca.setText("Cajamarca");
+        jcajamarca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jcajamarca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jcajamarcaMouseClicked(evt);
@@ -872,6 +891,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jcallao.setBackground(new java.awt.Color(255, 255, 255));
         jcallao.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jcallao.setText("Callao");
+        jcallao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jcallao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jcallaoMouseClicked(evt);
@@ -881,6 +901,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jhuancavelica.setBackground(new java.awt.Color(255, 255, 255));
         jhuancavelica.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jhuancavelica.setText("Huancavelica");
+        jhuancavelica.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jhuancavelica.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jhuancavelicaMouseClicked(evt);
@@ -928,8 +949,8 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jlima, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jamazonas, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jamazonas)
+                        .addGap(13, 13, 13)
                         .addComponent(jlancash, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(13, 13, 13)
                         .addComponent(japurimac, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -951,7 +972,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
 
         jPanel9.setBackground(new java.awt.Color(209, 249, 255));
 
-        jLabel29.setFont(new java.awt.Font("Script MT Bold", 0, 24)); // NOI18N
+        jLabel29.setFont(new java.awt.Font("Segoe Script", 0, 24)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(0, 0, 204));
         jLabel29.setText("DESTINOS DISPONIBLES");
 
@@ -959,6 +980,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jtokio.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jtokio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/japon.png"))); // NOI18N
         jtokio.setText("Tokio");
+        jtokio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jtokio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtokioMouseClicked(evt);
@@ -969,6 +991,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jnewyork.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jnewyork.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/estados-unidos.png"))); // NOI18N
         jnewyork.setText("New York");
+        jnewyork.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jnewyork.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jnewyorkMouseClicked(evt);
@@ -979,6 +1002,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jlosangeles.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jlosangeles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/estados-unidos.png"))); // NOI18N
         jlosangeles.setText("Los Angeles");
+        jlosangeles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jlosangeles.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlosangelesMouseClicked(evt);
@@ -989,6 +1013,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jparis.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jparis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/francia.png"))); // NOI18N
         jparis.setText("Paris");
+        jparis.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jparis.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jparisMouseClicked(evt);
@@ -999,6 +1024,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jseul.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jseul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/corea-del-sur.png"))); // NOI18N
         jseul.setText("Seul");
+        jseul.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jseul.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jseulMouseClicked(evt);
@@ -1009,6 +1035,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jlondres.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jlondres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inglaterra.png"))); // NOI18N
         jlondres.setText("Londres");
+        jlondres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jlondres.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlondresMouseClicked(evt);
@@ -1019,6 +1046,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jmoscu.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jmoscu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/rusia.png"))); // NOI18N
         jmoscu.setText("Moscu");
+        jmoscu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jmoscu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jmoscuMouseClicked(evt);
@@ -1029,6 +1057,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jboston.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jboston.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/estados-unidos.png"))); // NOI18N
         jboston.setText("Boston");
+        jboston.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jboston.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jbostonMouseClicked(evt);
@@ -1040,22 +1069,21 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel29))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtokio, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jparis, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jseul, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlosangeles, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jnewyork, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlondres, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jmoscu, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jboston, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addComponent(jtokio, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jparis, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jseul, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlosangeles, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jnewyork, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlondres, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jmoscu, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jboston, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(153, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel29)
+                .addGap(14, 14, 14))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1078,10 +1106,10 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                 .addComponent(jmoscu, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jboston, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
-        jPanel7.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(447, 37, 370, 478));
+        jPanel7.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(447, 37, 350, 478));
 
         javax.swing.GroupLayout info_vuelosLayout = new javax.swing.GroupLayout(info_vuelos);
         info_vuelos.setLayout(info_vuelosLayout);
@@ -1234,7 +1262,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         Connection cn=objconexion.conexion_equipaje();
         
         try {
-            String sql="INSERT INTO equipaje(id_equipaje,Nombre,Apellido,Nºequip.,Peso,Precio)VALUES(null,?,?,?,?,?)";
+            String sql="INSERT INTO equipaje(id_equipaje,Nombre,Apellido,num_equipaje,Peso,Precio)VALUES(null,?,?,?,?,?)";
             PreparedStatement pst=(PreparedStatement) cn.prepareStatement(sql);
             //pst.setInt(1,Integer.parseInt(txtid_equipaje.getText().trim()));
             pst.setString(1,txtnombre1.getText().trim());
@@ -1244,7 +1272,6 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
             pst.setString(5,cmbprecio.getSelectedItem().toString().trim());
             
             pst.execute();
-            
             JOptionPane.showMessageDialog(null,"Registro Exitoso");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Error de Registro"+e.getMessage());
@@ -1284,7 +1311,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
     }
     
     private void tbRegistroequipajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRegistroequipajeMouseClicked
-try {
+        try {
             int i=tbRegistroequipaje.getSelectedRow();
             txtid_equipaje.setText((String) modelo.getValueAt(i, 0));
             txtnombre1.setText(modelo.getValueAt(i, 1).toString());
@@ -1292,55 +1319,55 @@ try {
             txtnumequipaje.setText(modelo.getValueAt(i, 3).toString());
             String peso=modelo.getValueAt(i, 4).toString();
             switch(peso){
-                case "4":
+                case "4 kg":
                  cmbpeso.setSelectedIndex(1);
                  break;
-                case "8":
+                case "8 kg":
                  cmbpeso.setSelectedIndex(2);
                  break;
-                case "10":
+                case "10 kg":
                  cmbpeso.setSelectedIndex(3);
                  break;
-                case "12":
+                case "12 kg":
                  cmbpeso.setSelectedIndex(4);
                  break;
-                case "14":
+                case "14 kg":
                  cmbpeso.setSelectedIndex(5);
                  break;
-                case "16":
+                case "16 kg":
                  cmbpeso.setSelectedIndex(6);
                  break;
-                case "18":
+                case "18 kg":
                  cmbpeso.setSelectedIndex(7);
                  break;
-                case "24":
+                case "24 kg":
                  cmbpeso.setSelectedIndex(8);
                  break;
             }
             String precio=modelo.getValueAt(i, 5).toString();
                 switch(precio){
-                case "20":
+                case "S/20":
                     cmbprecio.setSelectedIndex(1);
                     break;
-                case "New 40":
+                case "S/40":
                     cmbprecio.setSelectedIndex(2);
                     break;
-                case "50":
+                case "S/50":
                     cmbprecio.setSelectedIndex(3);
                     break;
-                case "60":
+                case "S/60":
                     cmbprecio.setSelectedIndex(4);
                     break;
-                case "70":
+                case "S/70":
                     cmbprecio.setSelectedIndex(5);
                     break;
-                case "80":
+                case "S/80":
                     cmbprecio.setSelectedIndex(6);
                     break;
-                case "90":
+                case "S/90":
                     cmbprecio.setSelectedIndex(7);
                     break;
-                case "120":
+                case "S/120":
                     cmbprecio.setSelectedIndex(8);
                     break;
                 }
@@ -1348,9 +1375,9 @@ try {
         } catch (Exception e) {
         }
        
-         btnAgregar.setEnabled(false);
-         btnEditar.setEnabled(true);
-         btnBorrar.setEnabled(true);
+         btnAgregar1.setEnabled(false);
+         btnEditar1.setEnabled(true);
+         btnBorrar1.setEnabled(true);
     }//GEN-LAST:event_tbRegistroequipajeMouseClicked
 
     public void BuscarNombreEqui(String texto){
@@ -1358,7 +1385,7 @@ try {
         conexion_equipaje objconexion=new conexion_equipaje();
         Connection cn=objconexion.conexion_equipaje();
          try {
-            String[] titulos={"ID","Nombre","Apellido","Nºequip.","Peso","Precio"};
+            String[] titulos={"ID","Nombre","Apellido","Nºequip","Peso","Precio"};
             String filtro=""+texto+"%";
             String sql="";
             if(texto.equals("")){
@@ -1375,9 +1402,9 @@ try {
                 fila[0]=rs.getString("id_equipaje");
                 fila[1]=rs.getString("Nombre");
                 fila[2]=rs.getString("Apellido");
-                fila[4]=rs.getString("Nºequip.");
-                fila[5]=rs.getString("Peso");
-                fila[6]=rs.getString("Precio");
+                fila[3]=rs.getString("num_equipaje");
+                fila[4]=rs.getString("Peso");
+                fila[5]=rs.getString("Precio");
                 modelo.addRow(fila);
             }
             tbRegistroequipaje.setModel(modelo);
@@ -1594,14 +1621,14 @@ try {
         Connection cn=objconexion.conexion_equipaje();
         
         try {
-            String sql="UPDATE equipaje SET Nombre=?,Apellido=?,Nºequip.=?,Peso=?,Precio=? WHERE id_equipaje=?";
+            String sql="UPDATE equipaje SET Nombre=?,Apellido=?,num_equipaje=?,Peso=?,Precio=? WHERE id_equipaje=?";
             PreparedStatement pst=(PreparedStatement) cn.prepareStatement(sql);
             int id=Integer.parseInt(txtid_equipaje.getText().trim());
             pst.setString(1,txtnombre1.getText().trim());
             pst.setString(2,txtapellido1.getText().trim());
             pst.setString(3,txtnumequipaje.getText().trim());
             pst.setString(4,cmbpeso.getSelectedItem().toString().trim());
-            pst.setString(8,cmbprecio.getSelectedItem().toString().trim());
+            pst.setString(5,cmbprecio.getSelectedItem().toString().trim());
             pst.setInt(6,id);
             
             pst.executeUpdate();
@@ -1860,6 +1887,12 @@ try {
                 System.out.println(evt);
         }
     }//GEN-LAST:event_jbostonMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+                 tbRegistroequipaje.print(); // Imprime el jTable
+                 } catch (PrinterException ex) { } // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     private void Total()
     {
@@ -2026,22 +2059,10 @@ try {
          cmbprecio.setSelectedIndex(0);
          txtnombre1.requestFocus();
          
-        btnAgregar.setEnabled(true);
-        btnEditar.setEnabled(false);
-        btnBorrar.setEnabled(false);
+        btnAgregar1.setEnabled(true);
+        btnEditar1.setEnabled(false);
+        btnBorrar1.setEnabled(false);
     }
-    
-    public Equipaje recupeDatosGUI(){
-        Equipaje OEquipajes=new Equipaje();
-        OEquipajes.setNombre1(txtnombre.getText().trim());
-        OEquipajes.setApellido1(txtapellido.getText().trim());
-        OEquipajes.setNum_equipaje(txtnumequipaje.getText().trim());
-        OEquipajes.setPeso(cxbtipodocu.getSelectedItem().toString().trim());
-        OEquipajes.setPrecio(txtnumdocu.getText().trim());
-        
-        return OEquipajes;
-    }
-  
     
     
     
@@ -2101,6 +2122,7 @@ try {
     private javax.swing.JLabel infoVuelos;
     private javax.swing.JPanel info_vuelos;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
