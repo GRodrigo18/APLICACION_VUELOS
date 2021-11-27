@@ -5,8 +5,12 @@ import java.sql.ResultSet;
 import CONTROLADOR.conexion_vuelos;
 import MODELO.Equipaje;
 import com.mysql.jdbc.PreparedStatement;
+import java.awt.Desktop;
 import java.awt.event.KeyEvent;
 import java.awt.print.PrinterException;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.Date;
@@ -155,8 +159,26 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
+        jlima = new javax.swing.JLabel();
+        jamazonas = new javax.swing.JLabel();
+        jlancash = new javax.swing.JLabel();
+        japurimac = new javax.swing.JLabel();
+        jarequipa = new javax.swing.JLabel();
+        jayacucho = new javax.swing.JLabel();
+        jcajamarca = new javax.swing.JLabel();
+        jcallao = new javax.swing.JLabel();
+        jhuancavelica = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
+        jtokio = new javax.swing.JLabel();
+        jnewyork = new javax.swing.JLabel();
+        jlosangeles = new javax.swing.JLabel();
+        jparis = new javax.swing.JLabel();
+        jseul = new javax.swing.JLabel();
+        jlondres = new javax.swing.JLabel();
+        jmoscu = new javax.swing.JLabel();
+        jboston = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -778,46 +800,285 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jPanel7.setBackground(new java.awt.Color(175, 209, 236));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel8.setBackground(new java.awt.Color(209, 249, 255));
+
         jLabel28.setFont(new java.awt.Font("Script MT Bold", 0, 24)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(0, 51, 204));
         jLabel28.setText("ORIGENES DISPONIBLES");
+
+        jlima.setBackground(new java.awt.Color(255, 255, 255));
+        jlima.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
+        jlima.setText("Lima");
+        jlima.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlimaMouseClicked(evt);
+            }
+        });
+
+        jamazonas.setBackground(new java.awt.Color(255, 255, 255));
+        jamazonas.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
+        jamazonas.setText("Amazonas");
+        jamazonas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jamazonasMouseClicked(evt);
+            }
+        });
+
+        jlancash.setBackground(new java.awt.Color(255, 255, 255));
+        jlancash.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
+        jlancash.setText("Ancash");
+        jlancash.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlancashMouseClicked(evt);
+            }
+        });
+
+        japurimac.setBackground(new java.awt.Color(255, 255, 255));
+        japurimac.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
+        japurimac.setText("Apurimac");
+        japurimac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                japurimacMouseClicked(evt);
+            }
+        });
+
+        jarequipa.setBackground(new java.awt.Color(255, 255, 255));
+        jarequipa.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
+        jarequipa.setText("Arequipa");
+        jarequipa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jarequipaMouseClicked(evt);
+            }
+        });
+
+        jayacucho.setBackground(new java.awt.Color(255, 255, 255));
+        jayacucho.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
+        jayacucho.setText("Ayacucho");
+        jayacucho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jayacuchoMouseClicked(evt);
+            }
+        });
+
+        jcajamarca.setBackground(new java.awt.Color(255, 255, 255));
+        jcajamarca.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
+        jcajamarca.setText("Cajamarca");
+        jcajamarca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jcajamarcaMouseClicked(evt);
+            }
+        });
+
+        jcallao.setBackground(new java.awt.Color(255, 255, 255));
+        jcallao.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
+        jcallao.setText("Callao");
+        jcallao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jcallaoMouseClicked(evt);
+            }
+        });
+
+        jhuancavelica.setBackground(new java.awt.Color(255, 255, 255));
+        jhuancavelica.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
+        jhuancavelica.setText("Huancavelica");
+        jhuancavelica.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jhuancavelicaMouseClicked(evt);
+            }
+        });
+
+        jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/peru (1).png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jamazonas, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jlima, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jlancash, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(japurimac, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jcallao, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jayacucho, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jarequipa, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jcajamarca, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jhuancavelica, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel28)
-                .addContainerGap(419, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jlima, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jamazonas, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jlancash, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(japurimac, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jarequipa, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(jayacucho, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jcajamarca, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(jcallao, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jhuancavelica, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(149, 149, 149))
         );
 
-        jPanel7.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 37, -1, -1));
+        jPanel7.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 37, 370, 480));
+
+        jPanel9.setBackground(new java.awt.Color(209, 249, 255));
 
         jLabel29.setFont(new java.awt.Font("Script MT Bold", 0, 24)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(0, 0, 204));
         jLabel29.setText("DESTINOS DISPONIBLES");
+
+        jtokio.setBackground(new java.awt.Color(255, 255, 255));
+        jtokio.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
+        jtokio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/japon.png"))); // NOI18N
+        jtokio.setText("Tokio");
+        jtokio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtokioMouseClicked(evt);
+            }
+        });
+
+        jnewyork.setBackground(new java.awt.Color(255, 255, 255));
+        jnewyork.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
+        jnewyork.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/estados-unidos.png"))); // NOI18N
+        jnewyork.setText("New York");
+        jnewyork.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jnewyorkMouseClicked(evt);
+            }
+        });
+
+        jlosangeles.setBackground(new java.awt.Color(255, 255, 255));
+        jlosangeles.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
+        jlosangeles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/estados-unidos.png"))); // NOI18N
+        jlosangeles.setText("Los Angeles");
+        jlosangeles.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlosangelesMouseClicked(evt);
+            }
+        });
+
+        jparis.setBackground(new java.awt.Color(255, 255, 255));
+        jparis.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
+        jparis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/francia.png"))); // NOI18N
+        jparis.setText("Paris");
+        jparis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jparisMouseClicked(evt);
+            }
+        });
+
+        jseul.setBackground(new java.awt.Color(255, 255, 255));
+        jseul.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
+        jseul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/corea-del-sur.png"))); // NOI18N
+        jseul.setText("Seul");
+        jseul.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jseulMouseClicked(evt);
+            }
+        });
+
+        jlondres.setBackground(new java.awt.Color(255, 255, 255));
+        jlondres.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
+        jlondres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inglaterra.png"))); // NOI18N
+        jlondres.setText("Londres");
+        jlondres.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlondresMouseClicked(evt);
+            }
+        });
+
+        jmoscu.setBackground(new java.awt.Color(255, 255, 255));
+        jmoscu.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
+        jmoscu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/rusia.png"))); // NOI18N
+        jmoscu.setText("Moscu");
+        jmoscu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmoscuMouseClicked(evt);
+            }
+        });
+
+        jboston.setBackground(new java.awt.Color(255, 255, 255));
+        jboston.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
+        jboston.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/estados-unidos.png"))); // NOI18N
+        jboston.setText("Boston");
+        jboston.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbostonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel29)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel29))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtokio, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jparis, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jseul, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlosangeles, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jnewyork, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlondres, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jmoscu, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jboston, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel29)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(jtokio, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jnewyork, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jlosangeles, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jparis, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jseul, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jlondres, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jmoscu, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jboston, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         jPanel7.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(447, 37, 370, 478));
@@ -834,7 +1095,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
             .addGroup(info_vuelosLayout.createSequentialGroup()
                 .addComponent(jLabel24)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE))
         );
 
         jPanel5.add(info_vuelos, "card4");
@@ -1352,6 +1613,253 @@ try {
             JOptionPane.showMessageDialog(null,"Error de Registro"+e.getMessage());
         }
     }//GEN-LAST:event_btnEditar1ActionPerformed
+
+    private void jlimaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlimaMouseClicked
+        {  
+        try 
+                {
+                Desktop.getDesktop().browse(new URI("https://www.munlima.gob.pe/"));
+                } 
+                catch (URISyntaxException ex) 
+                {
+                 System.out.println(ex);
+                }
+                catch(IOException ex){
+                System.out.println(evt);
+                }
+            }  
+    }//GEN-LAST:event_jlimaMouseClicked
+
+    private void jamazonasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jamazonasMouseClicked
+        try 
+                {
+                Desktop.getDesktop().browse(new URI("http://www.regionamazonas.gob.pe/sisadport/portal/index.html#/home"));
+                } 
+                catch (URISyntaxException ex) 
+                {
+                 System.out.println(ex);
+                }
+                catch(IOException ex){
+                System.out.println(evt);
+        }
+    }//GEN-LAST:event_jamazonasMouseClicked
+
+    private void jlancashMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlancashMouseClicked
+        try 
+                {
+                Desktop.getDesktop().browse(new URI("https://www.regionancash.gob.pe/"));
+                } 
+                catch (URISyntaxException ex) 
+                {
+                System.out.println(ex);
+                }
+                catch(IOException ex){
+                System.out.println(evt);
+        }
+    }//GEN-LAST:event_jlancashMouseClicked
+
+    private void japurimacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_japurimacMouseClicked
+        try 
+                {
+                Desktop.getDesktop().browse(new URI("http://www.regionapurimac.gob.pe/"));
+                } 
+                catch (URISyntaxException ex) 
+                {
+                System.out.println(ex);
+                }
+                catch(IOException ex){
+                System.out.println(evt);
+        }
+    }//GEN-LAST:event_japurimacMouseClicked
+
+    private void jarequipaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jarequipaMouseClicked
+        try 
+                {
+
+                Desktop.getDesktop().browse(new URI("https://www.regionarequipa.gob.pe/"));
+
+                } 
+                catch (URISyntaxException ex) 
+                {
+
+                 System.out.println(ex);
+
+                }
+                catch(IOException ex){
+
+                System.out.println(evt);
+
+        }
+    }//GEN-LAST:event_jarequipaMouseClicked
+
+    private void jayacuchoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jayacuchoMouseClicked
+        try 
+                {
+                Desktop.getDesktop().browse(new URI("https://www.regionayacucho.gob.pe/index.php?option=com_content&view=article&id=132"));
+                } 
+                catch (URISyntaxException ex) 
+                {
+                System.out.println(ex);
+                }
+                catch(IOException ex){
+                System.out.println(evt);
+        }
+    }//GEN-LAST:event_jayacuchoMouseClicked
+
+    private void jcajamarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcajamarcaMouseClicked
+        try 
+                {
+                Desktop.getDesktop().browse(new URI("https://www.regioncajamarca.gob.pe/"));
+                } 
+                catch (URISyntaxException ex) 
+                {
+                System.out.println(ex);
+                }
+                catch(IOException ex){
+                System.out.println(evt);
+        }
+    }//GEN-LAST:event_jcajamarcaMouseClicked
+
+    private void jcallaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcallaoMouseClicked
+        try 
+                {
+                Desktop.getDesktop().browse(new URI("https://www.municallao.gob.pe/"));
+                } 
+                catch (URISyntaxException ex) 
+                {
+                System.out.println(ex);
+                }
+                catch(IOException ex){
+
+                System.out.println(evt);
+        }
+    }//GEN-LAST:event_jcallaoMouseClicked
+
+    private void jhuancavelicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jhuancavelicaMouseClicked
+        try 
+                {
+                Desktop.getDesktop().browse(new URI("https://www.regionhuancavelica.gob.pe/"));
+                } 
+                catch (URISyntaxException ex) 
+                {
+                System.out.println(ex);
+                }
+                catch(IOException ex){
+                System.out.println(evt);
+        }
+    }//GEN-LAST:event_jhuancavelicaMouseClicked
+
+    private void jtokioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtokioMouseClicked
+        try 
+                {
+                Desktop.getDesktop().browse(new URI("https://www.gotokyo.org/es/index.html"));
+                } 
+                catch (URISyntaxException ex) 
+                {
+                System.out.println(ex);
+                }
+                catch(IOException ex){
+                System.out.println(evt);
+        }
+    }//GEN-LAST:event_jtokioMouseClicked
+
+    private void jnewyorkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jnewyorkMouseClicked
+        try 
+                {
+                Desktop.getDesktop().browse(new URI("https://www1.nyc.gov/"));
+                } 
+                catch (URISyntaxException ex) 
+                {
+                System.out.println(ex);
+                }
+                catch(IOException ex){
+                System.out.println(evt);
+        }
+    }//GEN-LAST:event_jnewyorkMouseClicked
+
+    private void jlosangelesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlosangelesMouseClicked
+        try 
+                {
+                Desktop.getDesktop().browse(new URI("https://www.lacity.org/"));
+                } 
+                catch (URISyntaxException ex) 
+                {
+                System.out.println(ex);
+                }
+                catch(IOException ex){
+                System.out.println(evt);
+        }
+    }//GEN-LAST:event_jlosangelesMouseClicked
+
+    private void jparisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jparisMouseClicked
+        try 
+                {
+                Desktop.getDesktop().browse(new URI("http://www.paris.fr/"));
+                } 
+                catch (URISyntaxException ex) 
+                {
+                System.out.println(ex);
+                }
+                catch(IOException ex){
+                System.out.println(evt);
+        }
+    }//GEN-LAST:event_jparisMouseClicked
+
+    private void jseulMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jseulMouseClicked
+        try 
+                {
+                Desktop.getDesktop().browse(new URI("http://world.seoul.go.kr/"));
+                } 
+                catch (URISyntaxException ex) 
+                {
+                System.out.println(ex);
+                }
+                catch(IOException ex){
+                System.out.println(evt);
+        }
+    }//GEN-LAST:event_jseulMouseClicked
+
+    private void jlondresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlondresMouseClicked
+        try 
+                {
+                Desktop.getDesktop().browse(new URI("https://www.london.gov.uk/"));
+                } 
+                catch (URISyntaxException ex) 
+                {
+                System.out.println(ex);
+                }
+                catch(IOException ex){
+                System.out.println(evt);
+        }
+    }//GEN-LAST:event_jlondresMouseClicked
+
+    private void jmoscuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmoscuMouseClicked
+        try 
+                {
+                Desktop.getDesktop().browse(new URI("http://www.mos.ru/"));
+                } 
+                catch (URISyntaxException ex) 
+                {
+                System.out.println(ex);
+                }
+                catch(IOException ex){
+                System.out.println(evt);
+        }
+    }//GEN-LAST:event_jmoscuMouseClicked
+
+    private void jbostonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbostonMouseClicked
+        try 
+                {
+                Desktop.getDesktop().browse(new URI("http://www.cityofboston.gov/"));
+                } 
+                catch (URISyntaxException ex) 
+                {
+                System.out.println(ex);
+                }
+                catch(IOException ex){
+                System.out.println(evt);
+        }
+    }//GEN-LAST:event_jbostonMouseClicked
     
     private void Total()
     {
@@ -1618,6 +2126,7 @@ try {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1634,6 +2143,23 @@ try {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel jamazonas;
+    private javax.swing.JLabel japurimac;
+    private javax.swing.JLabel jarequipa;
+    private javax.swing.JLabel jayacucho;
+    private javax.swing.JLabel jboston;
+    private javax.swing.JLabel jcajamarca;
+    private javax.swing.JLabel jcallao;
+    private javax.swing.JLabel jhuancavelica;
+    private javax.swing.JLabel jlancash;
+    private javax.swing.JLabel jlima;
+    private javax.swing.JLabel jlondres;
+    private javax.swing.JLabel jlosangeles;
+    private javax.swing.JLabel jmoscu;
+    private javax.swing.JLabel jnewyork;
+    private javax.swing.JLabel jparis;
+    private javax.swing.JLabel jseul;
+    private javax.swing.JLabel jtokio;
     private javax.swing.JLabel lblfechactual;
     private javax.swing.JLabel lblhoraactual;
     public javax.swing.JLabel lblnombre;
