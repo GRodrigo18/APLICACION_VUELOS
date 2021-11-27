@@ -636,7 +636,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
 
         cmbpeso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "4 kg", "8 kg", "10 kg", "12 kg", "14 kg", "16 kg", "18 kg", "24 kg", " " }));
 
-        cmbprecio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "S/20", "S/40", "S/50", "S/60", "S/70", "S/80", "S/90", "S/120" }));
+        cmbprecio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "20", "40", "50", "60", "70", "80", "90", "120" }));
 
         jLabel30.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar.png"))); // NOI18N
@@ -674,7 +674,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jButton2.setText(" ");
         jButton2.setBorder(null);
         jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -740,7 +740,8 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(btnCalcular)
                                 .addGap(34, 34, 34)
-                                .addComponent(btnPrecios))
+                                .addComponent(btnPrecios)
+                                .addGap(14, 14, 14))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(47, 47, 47))))
         );
@@ -793,7 +794,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCalcular)
                     .addComponent(btnPrecios))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         registro_equipaje1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 43, 850, 580));
@@ -821,7 +822,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jlima.setBackground(new java.awt.Color(255, 255, 255));
         jlima.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jlima.setText("Lima");
-        jlima.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlima.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlima.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlimaMouseClicked(evt);
@@ -831,7 +832,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jamazonas.setBackground(new java.awt.Color(255, 255, 255));
         jamazonas.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jamazonas.setText("Amazonas");
-        jamazonas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jamazonas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jamazonas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jamazonasMouseClicked(evt);
@@ -841,7 +842,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jlancash.setBackground(new java.awt.Color(255, 255, 255));
         jlancash.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jlancash.setText("Ancash");
-        jlancash.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlancash.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlancash.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlancashMouseClicked(evt);
@@ -851,7 +852,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         japurimac.setBackground(new java.awt.Color(255, 255, 255));
         japurimac.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         japurimac.setText("Apurimac");
-        japurimac.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        japurimac.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         japurimac.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 japurimacMouseClicked(evt);
@@ -861,7 +862,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jarequipa.setBackground(new java.awt.Color(255, 255, 255));
         jarequipa.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jarequipa.setText("Arequipa");
-        jarequipa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jarequipa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jarequipa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jarequipaMouseClicked(evt);
@@ -871,7 +872,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jayacucho.setBackground(new java.awt.Color(255, 255, 255));
         jayacucho.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jayacucho.setText("Ayacucho");
-        jayacucho.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jayacucho.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jayacucho.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jayacuchoMouseClicked(evt);
@@ -881,7 +882,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jcajamarca.setBackground(new java.awt.Color(255, 255, 255));
         jcajamarca.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jcajamarca.setText("Cajamarca");
-        jcajamarca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jcajamarca.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jcajamarca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jcajamarcaMouseClicked(evt);
@@ -891,7 +892,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jcallao.setBackground(new java.awt.Color(255, 255, 255));
         jcallao.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jcallao.setText("Callao");
-        jcallao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jcallao.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jcallao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jcallaoMouseClicked(evt);
@@ -901,7 +902,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jhuancavelica.setBackground(new java.awt.Color(255, 255, 255));
         jhuancavelica.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jhuancavelica.setText("Huancavelica");
-        jhuancavelica.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jhuancavelica.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jhuancavelica.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jhuancavelicaMouseClicked(evt);
@@ -980,7 +981,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jtokio.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jtokio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/japon.png"))); // NOI18N
         jtokio.setText("Tokio");
-        jtokio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jtokio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jtokio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtokioMouseClicked(evt);
@@ -991,7 +992,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jnewyork.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jnewyork.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/estados-unidos.png"))); // NOI18N
         jnewyork.setText("New York");
-        jnewyork.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jnewyork.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jnewyork.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jnewyorkMouseClicked(evt);
@@ -1002,7 +1003,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jlosangeles.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jlosangeles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/estados-unidos.png"))); // NOI18N
         jlosangeles.setText("Los Angeles");
-        jlosangeles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlosangeles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlosangeles.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlosangelesMouseClicked(evt);
@@ -1013,7 +1014,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jparis.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jparis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/francia.png"))); // NOI18N
         jparis.setText("Paris");
-        jparis.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jparis.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jparis.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jparisMouseClicked(evt);
@@ -1024,7 +1025,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jseul.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jseul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/corea-del-sur.png"))); // NOI18N
         jseul.setText("Seul");
-        jseul.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jseul.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jseul.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jseulMouseClicked(evt);
@@ -1035,7 +1036,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jlondres.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jlondres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inglaterra.png"))); // NOI18N
         jlondres.setText("Londres");
-        jlondres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlondres.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlondres.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlondresMouseClicked(evt);
@@ -1046,7 +1047,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jmoscu.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jmoscu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/rusia.png"))); // NOI18N
         jmoscu.setText("Moscu");
-        jmoscu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jmoscu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jmoscu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jmoscuMouseClicked(evt);
@@ -1057,7 +1058,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jboston.setFont(new java.awt.Font("Sitka Subheading", 3, 18)); // NOI18N
         jboston.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/estados-unidos.png"))); // NOI18N
         jboston.setText("Boston");
-        jboston.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jboston.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jboston.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jbostonMouseClicked(evt);
@@ -1346,28 +1347,28 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
             }
             String precio=modelo.getValueAt(i, 5).toString();
                 switch(precio){
-                case "S/20":
+                case "20":
                     cmbprecio.setSelectedIndex(1);
                     break;
-                case "S/40":
+                case "40":
                     cmbprecio.setSelectedIndex(2);
                     break;
-                case "S/50":
+                case "50":
                     cmbprecio.setSelectedIndex(3);
                     break;
-                case "S/60":
+                case "60":
                     cmbprecio.setSelectedIndex(4);
                     break;
-                case "S/70":
+                case "70":
                     cmbprecio.setSelectedIndex(5);
                     break;
-                case "S/80":
+                case "80":
                     cmbprecio.setSelectedIndex(6);
                     break;
-                case "S/90":
+                case "90":
                     cmbprecio.setSelectedIndex(7);
                     break;
-                case "S/120":
+                case "120":
                     cmbprecio.setSelectedIndex(8);
                     break;
                 }
@@ -1611,6 +1612,21 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         Total();
     }//GEN-LAST:event_btnCalcularActionPerformed
 
+    private void Total()
+    {
+        double t=0;
+        double p=0;
+        if(tbRegistroequipaje.getRowCount()>0)
+        {
+            for(int i=0; i<tbRegistroequipaje.getRowCount();i++)
+            {
+                p=Double.parseDouble(tbRegistroequipaje.getValueAt(i,5).toString());
+                t+=p;
+            }
+            JOptionPane.showMessageDialog(null,"El total es: S/."+t);
+        }   
+    }
+    
     private void txtbuscar1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscar1KeyReleased
         String buscar=txtbuscar1.getText().trim();
         BuscarNombreEqui(buscar);
@@ -1893,23 +1909,7 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
                  tbRegistroequipaje.print(); // Imprime el jTable
                  } catch (PrinterException ex) { } // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
-    
-    private void Total()
-    {
-        double t=0;
-        double p=0;
-        if(tbRegistroequipaje.getRowCount()>0)
-        {
-            for(int i=0; i<tbRegistroequipaje.getRowCount();i++)
-            {
-                p=Double.parseDouble(tbRegistroequipaje.getValueAt(i,5).toString());
-                t+=p;
-            }
-            JOptionPane.showMessageDialog(null,"El total es:"+t);
-        }
-        
-    }
-    
+
     //METODOS 
     public static String fecha()
     {
