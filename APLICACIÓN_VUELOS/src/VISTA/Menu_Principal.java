@@ -564,14 +564,20 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
         jLabel26.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel26.setText("Precio en S/.:");
 
+        txtnombre1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+
         jLabel6.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel6.setText("Nombres:");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel1.setText("Nº de equipaje:");
 
+        txtnumequipaje.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel5.setText("Apellidos:");
+
+        txtapellido1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel11.setText("Peso: ");
@@ -634,14 +640,17 @@ public class Menu_Principal extends javax.swing.JFrame implements Runnable {
             }
         });
 
+        cmbpeso.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         cmbpeso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "4 kg", "8 kg", "10 kg", "12 kg", "14 kg", "16 kg", "18 kg", "24 kg", " " }));
 
+        cmbprecio.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         cmbprecio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "20", "40", "50", "60", "70", "80", "90", "120" }));
 
         jLabel30.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar.png"))); // NOI18N
         jLabel30.setText("BUSCAR:");
 
+        txtbuscar1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         txtbuscar1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtbuscar1KeyReleased(evt);
